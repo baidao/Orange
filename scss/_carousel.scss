@@ -1,0 +1,44 @@
+//carousel
+.or-carousel {
+  position: relative;
+  overflow: hidden;
+  .or-carousel-inner  {
+    position: relative;
+    white-space: nowrap;
+    font-size: 0; //inline block 0.5em gaps
+    @include transition-property(transform);
+    @include transition-timing-function($timing-fuction);
+    @include transition-duration(.3s);
+    &.dragging {
+      @include transition-duration('');
+    }
+    .or-carousel-item {
+      display: inline-block;
+    }
+  }
+  .or-carousel-controls {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    > li {
+      line-height: 0;
+      overflow: hidden;
+      display: inline-block;
+      padding: .25rem;
+      width: 0;
+      height: 0;
+      margin: 0 .25rem;
+      background-color: rgba(255,255,255,0.3);
+      @include transition(background-color 0.1s ease-in);
+      @include box-shadow(inset rgba(0,0,0,0.25) 0 1px 2px);
+      @include border-radius(.25rem);
+
+      &.active {
+        background-color: rgba(255,255,255,1);
+        @include box-shadow(rgba(0,0,0,0.25) 0 1px 2px);
+      }
+    }
+  }
+}

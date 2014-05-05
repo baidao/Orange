@@ -1,0 +1,84 @@
+<!doctype html>
+ <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>orange</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="../dist/css/orange.css">
+        <link rel="stylesheet" type="text/css" href="../demo/css/prettify.css">
+    </head>
+    <style type="text/css">
+    body {
+      -webkit-user-select: all;
+      -moz-user-select: all;
+      -ms-user-select: all;
+      user-select: all;
+    }
+    .row {
+      margin: 20px auto;
+    }
+    .iphone {
+        width: 320px;
+        height: 568px;
+        border: 1px solid #ccc;
+        position: relative;
+        float: right;
+    }
+    .or-bar {
+        position: absolute !important;
+    }
+    </style>
+    <body ontouchstart="">
+      <h1>Bars</h1>
+      <div class="row">
+        <div class="source col-66">
+          <h3>top and bottom bars</h3>
+          <pre class="prettyprint lang-html">
+            <!-- header -->
+            <header class="or-bar or-bar-nav">
+              <h1 class="title">Header</h1>
+            </header>
+            <!-- content -->
+            <div class="or-page">
+              <div class="or-page-content">
+                Content
+              </div>
+            </div>
+            <!-- footer -->
+            <footer class="or-bar or-bar-footer">
+            </footer>
+          </pre>
+        </div>
+        <div class="perform col-33">
+        </div>
+      </div>
+      <div class="row">
+        <div class="source col-66">
+          <h3>tab bars</h3>
+          <pre class="prettyprint lang-html">
+            <!-- content -->
+            <div class="or-page">
+              <div class="or-page-content">
+              </div>
+            </div>
+            <!-- tab bars -->
+            <footer class="or-bar or-bar-tab">
+              <div class="or-tab-item active">首页</div>
+              <div class="or-tab-item">活动</div>
+              <div class="or-tab-item">咨询</div>
+              <div class="or-tab-item">设置</div>
+            </footer>
+          </pre>
+        </div>
+        <div class="perform col-33">
+        </div>
+      </div>
+      <script type="text/javascript" src="../bower_components/zepto/zepto.js"></script>
+      <script type="text/javascript" src="../demo/js/prettify.js"></script>
+      <script type="text/javascript" src="../demo/js/doc.js"></script>
+    </body>
+</html>

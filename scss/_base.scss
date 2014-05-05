@@ -1,0 +1,108 @@
+$content-padding: 10px;
+
+.or-page {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+
+.disable-pointer-events {
+  pointer-events: none;
+}
+
+.enable-pointer-events {
+  pointer-events: auto;
+}
+
+.hide {
+  display: none;
+}
+.opacity-hide {
+  opacity: 0;
+}
+
+.show {
+  display: block;
+}
+
+.opacity-show {
+  opacity: 1;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.disable-user-behavior {
+  // used to prevent the browser from doing its native behavior. this doesnt
+  // prevent the scrolling, but cancels the contextmenu, tap highlighting, etc
+  @include user-select(none);
+  @include touch-callout(none);
+  @include tap-highlight-transparent();
+
+  -webkit-user-drag: none;
+  -ms-touch-action: none;
+  -ms-content-zooming: none;
+}
+
+.block {
+  display: block;
+  clear: both;
+  &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ".";
+  }
+}
+
+.full-image {
+  width: 100%;
+}
+
+
+.padding {
+  padding: $content-padding;
+}
+
+.padding-top,
+.padding-vertical {
+  padding-top: $content-padding;
+}
+
+.padding-right,
+.padding-horizontal {
+  padding-right: $content-padding;
+}
+
+.padding-bottom,
+.padding-vertical {
+  padding-bottom: $content-padding;
+}
+
+.padding-left,
+.padding-horizontal {
+  padding-left: $content-padding;
+}
+
+.rounded {
+  border-radius: $border-radius;
+}
