@@ -1,16 +1,15 @@
 {
-  "name": "orange",
+  "name": "Orange",
   "version": "0.0.1",
   "keywords": [
     "css",
+    "js",
     "mobile"
   ],
-  "author": "Xincheng Yang",
-  "style": "dist/css/orange.css",
-  "sass": "sass/orange.scss",
+  "author": "baidao",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sdyxch/orange.git"
+    "url": "https://github.com/baidao/Orange.git"
   },
   "license": "MIT",
   "scripts": {
