@@ -1,0 +1,51 @@
+body {
+  @include text-size-adjust(100%);
+  @include touch-callout(none);
+  @include user-select(none);
+  @include backface-visibility(hidden);
+  @include font-smoothing(antialiased);
+
+  color: #333;
+  word-wrap: break-word;
+  font-size: $font-size-default;
+  font-family: $font-family-default;
+  line-height: $line-height-default;
+  text-rendering: optimizeLegibility;
+  background-color: $chrome-color;
+  -webkit-overflow-scrolling: touch;
+  -webkit-user-drag: none;
+}
+
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
+
+
+html, body, ul, ol, img, p, input, button {
+  margin: 0;
+  padding: 0;
+}
+
+
+a, a:active, a:focus,
+button, button:active,
+input, input:focus,
+select, select:focus,
+textarea, textarea:focus {
+  outline: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+  &:active {
+    color: darken($primary-color, 10%);
+  }
+}
+
+ol, ul  {
+  list-style: none;
+}

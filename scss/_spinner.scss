@@ -1,0 +1,44 @@
+//http://codepen.io/timohausmann/pen/mrFjh
+
+@include keyframes(spin) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(360deg));
+  }
+}
+
+$spinner-color: $primary-color !default;
+$spinner-background-color: $table-selected-color !default;
+$spinner-stroke: 4px !default;
+$spinner-diameter: 40px !default;
+$spinner-sides: 1 !default;
+
+
+@mixin spinner(
+  $color: $spinner-color,
+  $background-color: $spinner-background-color,
+  $stroke: $spinner-stroke,
+  $diameter: $spinner-diameter,
+  $sides: $spinner-sides
+) {
+  border: $stroke solid $background-color;
+  font-size: $diameter;
+  width: 1em;
+  height: 1em;
+  border-radius: .5em;
+  @include box-sizing(border-box);
+  @include animation(spin 1s linear infinite);
+  border-top-color: $color;
+  @if $sides >= 2 {
+    border-right-color: $color;
+  }
+  @if $sides >= 3 {
+    border-bottom-color: $color;
+  }
+}
+
+.spinner {
+  @include spinner();
+}

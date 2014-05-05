@@ -1,0 +1,130 @@
+//https://github.com/twbs/ratchet/blob/master/sass/buttons.scss
+
+.or-btn {
+  position: relative;
+  display: inline-block;
+  font-weight: $font-weight-light;
+  line-height: 1;
+  text-align: center;
+  vertical-align: top;
+  white-space: nowrap;
+  color: $chrome-color;
+  border: 1px solid $chrome-color;
+  background-color: $chrome-color;
+  padding: 6px 10px;
+  @include border-radius(3px);
+
+  &:active,
+  &.active {
+    color: #fff;
+    background-color: $default-color;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: .6;
+  }
+}
+
+.or-btn-primary {
+  color: #fff;
+  border: 1px solid $primary-color;
+  background-color: $primary-color;
+
+  &:active,
+  &.active {
+    color: #fff;
+    border: 1px solid darken($primary-color, 10%);
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.or-btn-positive {
+  color: #fff;
+  border: 1px solid $positive-color;
+  background-color: $positive-color;
+
+  &:active,
+  &.active {
+    color: #fff;
+    border: 1px solid darken($positive-color, 10%);
+    background-color: darken($positive-color, 10%);
+  }
+}
+
+.or-btn-negative {
+  color: #fff;
+  border: 1px solid $negative-color;
+  background-color: $negative-color;
+
+  &:active,
+  &.active {
+    color: #fff;
+    border: 1px solid darken($negative-color, 10%);
+    background-color: darken($negative-color, 10%);
+  }
+}
+
+.or-btn-outlined {
+  background-color: transparent;
+
+  &.or-btn-primary {
+    color: $primary-color;
+  }
+  &.or-btn-positive {
+    color: $positive-color;
+  }
+  &.or-btn-negative {
+    color: $negative-color;
+  }
+  &.or-btn-primary:active, &.or-btn-primary.active,
+  &.or-btn-positive:active, &.or-btn-positive.active
+  &.or-btn-negative:active, &.or-btn-negative.active {
+    color: #fff;
+  }
+}
+
+.or-btn-group {
+  display: table;
+  font-size: 1em;
+  border-color: rgba(0, 0, 0, 0);
+  white-space: nowrap;
+  margin: 10px auto;
+
+  .or-btn {
+    position: relative;
+    display: table-cell;
+    border-width: 1px 0 1px 1px;
+    @include border-radius(0);
+
+    &:first-child {
+      @include border-radius(3px 0 0 3px);
+      border-right-width: 0;
+    }
+
+    &:last-child {
+      @include border-radius(0 3px 3px 0);
+      border-width: 1px;
+    }
+  }
+}
+
+
+.or-btn-block {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 10px;
+}
+
+.or-btn-link {
+  color: $primary-color;
+  background-color: transparent;
+  border: none;
+
+  &:active,
+  &.active {
+    color: lighten($primary-color, 20%);
+    background-color: transparent;
+  }
+}
