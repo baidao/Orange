@@ -12,7 +12,7 @@ require.config({
     }
   },
   paths: {
-    'zepto': 'http://zeptojs.com/zepto.min',
+    'zepto': 'http://cdn.staticfile.org/zepto/1.1.3/zepto.min',
     'orange': 'https://rawgithub.com/baidao/orange/master/dist/js/orange'
   }
 });
