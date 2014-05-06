@@ -226,21 +226,3 @@ pre {
   padding: 10px;
   text-align: center;
 }
-
-.doc-loading {
-  position: fixed;
-  z-index: 100000;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left:0;
-  background-color: #ff9500;
-}
-
-.doc-loading .doc-spinner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 100001;
-  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1,1,1) !important
-}
