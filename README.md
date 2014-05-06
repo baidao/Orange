@@ -4,6 +4,8 @@ Framework for mobile app
 #Dependencies
 - Zepto
 - RequireJS
+- HighCharts
+- HighChartsAdapter
 
 #Installing
 ```
