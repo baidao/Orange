@@ -483,7 +483,7 @@ p {
   vertical-align: top;
   white-space: nowrap;
   color: #929292;
-  border: 1px solid rgba(247, 247, 247, 0.98);
+  border: 1px solid #929292;
   background-color: rgba(247, 247, 247, 0.98);
   padding: 6px 10px;
   -webkit-border-radius: 3px;
