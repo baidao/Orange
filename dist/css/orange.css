@@ -1190,12 +1190,14 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) !important;
-  -moz-transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) !important;
-  -ms-transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) !important;
-  -o-transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) !important;
-  transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) !important;
   z-index: 99999;
+  margin-left: -.5em;
+  margin-top: -.5em;
+  display: none;
+}
+/* line 50, ../../scss/_spinner.scss */
+.spinner.active {
+  display: block;
 }
 
 /* line 3, ../../scss/_toggle.scss */
