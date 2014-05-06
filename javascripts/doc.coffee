@@ -15,6 +15,8 @@ require [
   'zepto'
   'orange'
 ], ($, orange) ->
+  #delegate click to tap for not touch device
+  ($(document).delegate 'body', 'click', (e) -> $(e.target).trigger 'tap') unless 'ontouchend' in window
   $ ->
     html_encode = (str) ->
       s = ''
@@ -28,16 +30,22 @@ require [
       return s
 
     #prettify code
-    $('pre').each (index, item) ->
+    $('pre.lang-html').each (index, item) ->
       source = $(item).html()
       $(item).parent('.source').siblings('.perform').html("<div class='iphone'>#{source}</div>")
       $(item).html html_encode(source)
     prettyPrint()
 
-    #delegate click to tap for not touch device
-    unless 'ontouchend' in window
-      $(document).delegate 'body', 'click', (e) ->
-        $(e.target).trigger 'tap'
+
+    #plugins
+    carouselWrapper = $('#carouselWrapper')
+    spinnerWrapper = $('#spinnerWrapper')
+    showSpinner = $('#showSpinner')
+    hideSpinner = $('#hideSpinner')
+
+    carouselWrapper.carousel()
+    showSpinner.on 'tap', -> spinnerWrapper.spinner()
+    hideSpinner.on 'tap', -> spinnerWrapper.spinner('hide')
 
     #show docs
     $('#main_content_wrap').show()

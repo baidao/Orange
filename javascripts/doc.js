@@ -18,8 +18,13 @@ require.config({
 });
 
 require(['zepto', 'orange'], function($, orange) {
+  if (__indexOf.call(window, 'ontouchend') < 0) {
+    $(document).delegate('body', 'click', function(e) {
+      return $(e.target).trigger('tap');
+    });
+  }
   return $(function() {
-    var html_encode;
+    var carouselWrapper, hideSpinner, html_encode, showSpinner, spinnerWrapper;
     html_encode = function(str) {
       var s;
       s = '';
@@ -34,18 +39,24 @@ require(['zepto', 'orange'], function($, orange) {
       s = s.replace(/\n/g, '<br>');
       return s;
     };
-    $('pre').each(function(index, item) {
+    $('pre.lang-html').each(function(index, item) {
       var source;
       source = $(item).html();
       $(item).parent('.source').siblings('.perform').html("<div class='iphone'>" + source + "</div>");
       return $(item).html(html_encode(source));
     });
     prettyPrint();
-    if (__indexOf.call(window, 'ontouchend') < 0) {
-      $(document).delegate('body', 'click', function(e) {
-        return $(e.target).trigger('tap');
-      });
-    }
+    carouselWrapper = $('#carouselWrapper');
+    spinnerWrapper = $('#spinnerWrapper');
+    showSpinner = $('#showSpinner');
+    hideSpinner = $('#hideSpinner');
+    carouselWrapper.carousel();
+    showSpinner.on('tap', function() {
+      return spinnerWrapper.spinner();
+    });
+    hideSpinner.on('tap', function() {
+      return spinnerWrapper.spinner('hide');
+    });
     $('#main_content_wrap').show();
     return $('#doc-spinner').remove();
   });
