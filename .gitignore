@@ -5,4 +5,6 @@ test/temp
 .sass-cache
 .tmp
 scss/*.css
+Gruntfile.js
 scripts/*.js
+scripts/**/*.js
