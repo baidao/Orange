@@ -6,3 +6,4 @@ test/temp
 .tmp
 scss/*.css
 scripts/*.js
+scripts/**/*.js
