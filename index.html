@@ -14,7 +14,7 @@
   </head>
 
   <body>
-
+    <div id="doc-spinner" class="spinner"></div>
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
@@ -30,7 +30,7 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
+    <div id="main_content_wrap" class="outer" style="display:none;">
       <section id="main_content" class="inner">
         <h1>Types</h1>
         <div class="row doc-row">
@@ -534,9 +534,7 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="http://cdn.staticfile.org/zepto/1.0rc1/zepto.min.js"></script>
     <script type="text/javascript" src="http://cdn.staticfile.org/prettify/r298/prettify.min.js"></script>
-    <script type="text/javascript" src="javascripts/main.js"></script>
-
+    <script data-main="javascripts/doc" src="http://cdn.staticfile.org/require.js/2.1.11/require.min.js"></script>
   </body>
 </html>
