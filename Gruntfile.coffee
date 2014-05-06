@@ -53,7 +53,6 @@ module.exports = (grunt) ->
         sassDir: "scss"
         cssDir: "<%= meta.distPath %>css/"
         imagesDir: "images"
-        fontsDir: "fonts"
         relativeAssets: true
       server:
         options:

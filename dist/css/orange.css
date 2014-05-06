@@ -36,7 +36,7 @@ html, body, ul, ol, img, p, input, button {
   padding: 0;
 }
 
-/* line 30, ../../scss/_reset.scss */
+/* line 34, ../../scss/_reset.scss */
 a, a:active, a:focus,
 button, button:active,
 input, input:focus,
@@ -44,7 +44,7 @@ select, select:focus,
 textarea, textarea:focus {
   outline: none;
   -webkit-user-drag: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -133,7 +133,7 @@ ol, ul {
   -ms-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-user-drag: none;
   -ms-touch-action: none;
@@ -164,25 +164,25 @@ ol, ul {
   padding: 10px;
 }
 
-/* line 86, ../../scss/_base.scss */
+/* line 87, ../../scss/_base.scss */
 .padding-top,
 .padding-vertical {
   padding-top: 10px;
 }
 
-/* line 91, ../../scss/_base.scss */
+/* line 92, ../../scss/_base.scss */
 .padding-right,
 .padding-horizontal {
   padding-right: 10px;
 }
 
-/* line 96, ../../scss/_base.scss */
+/* line 97, ../../scss/_base.scss */
 .padding-bottom,
 .padding-vertical {
   padding-bottom: 10px;
 }
 
-/* line 101, ../../scss/_base.scss */
+/* line 102, ../../scss/_base.scss */
 .padding-left,
 .padding-horizontal {
   padding-left: 10px;
@@ -490,12 +490,12 @@ p {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 17, ../../scss/_button.scss */
+/* line 18, ../../scss/_button.scss */
 .or-btn:active, .or-btn.active {
   color: #fff;
   background-color: #929292;
 }
-/* line 23, ../../scss/_button.scss */
+/* line 24, ../../scss/_button.scss */
 .or-btn:disabled, .or-btn.disabled {
   opacity: .6;
 }
@@ -506,7 +506,7 @@ p {
   border: 1px solid #007aff;
   background-color: #007aff;
 }
-/* line 34, ../../scss/_button.scss */
+/* line 35, ../../scss/_button.scss */
 .or-btn-primary:active, .or-btn-primary.active {
   color: #fff;
   border: 1px solid #0062cc;
@@ -519,7 +519,7 @@ p {
   border: 1px solid #4cd964;
   background-color: #4cd964;
 }
-/* line 47, ../../scss/_button.scss */
+/* line 48, ../../scss/_button.scss */
 .or-btn-positive:active, .or-btn-positive.active {
   color: #fff;
   border: 1px solid #2ac845;
@@ -532,7 +532,7 @@ p {
   border: 1px solid #dd524d;
   background-color: #dd524d;
 }
-/* line 60, ../../scss/_button.scss */
+/* line 61, ../../scss/_button.scss */
 .or-btn-negative:active, .or-btn-negative.active {
   color: #fff;
   border: 1px solid #cf2d28;
@@ -555,7 +555,7 @@ p {
 .or-btn-outlined.or-btn-negative {
   color: #dd524d;
 }
-/* line 80, ../../scss/_button.scss */
+/* line 82, ../../scss/_button.scss */
 .or-btn-outlined.or-btn-primary:active, .or-btn-outlined.or-btn-primary.active, .or-btn-outlined.or-btn-positive:active, .or-btn-outlined.or-btn-positive.active
 .or-btn-outlined.or-btn-negative:active, .or-btn-outlined.or-btn-negative.active {
   color: #fff;
@@ -565,7 +565,7 @@ p {
 .or-btn-group {
   display: table;
   font-size: 1em;
-  border-color: transparent;
+  border-color: rgba(0, 0, 0, 0);
   white-space: nowrap;
   margin: 10px auto;
 }
@@ -611,7 +611,7 @@ p {
   background-color: transparent;
   border: none;
 }
-/* line 129, ../../scss/_button.scss */
+/* line 130, ../../scss/_button.scss */
 .or-btn-link:active, .or-btn-link.active {
   color: #66afff;
   background-color: transparent;
@@ -628,7 +628,7 @@ p {
   padding-left: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   background-color: #fafafa;
-  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+  background-image: linear, 0deg, #b2b2b2, #b2b2b2 50%, transparent 50%;
   background-repeat: repeat-x;
   background-size: 100% 1px;
 }
@@ -711,7 +711,7 @@ p {
   color: #929292;
   text-align: center;
 }
-/* line 89, ../../scss/_bar.scss */
+/* line 90, ../../scss/_bar.scss */
 .or-bar.or-bar-tab .or-tab-item.active, .or-bar.or-bar-tab .or-tab-item:active {
   color: #007aff;
 }
@@ -868,7 +868,7 @@ p {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 1, ../../scss/_form.scss */
+/* line 4, ../../scss/_form.scss */
 input,
 textarea,
 button,
@@ -877,7 +877,7 @@ select {
   font-size: 1.0625rem;
 }
 
-/* line 9, ../../scss/_form.scss */
+/* line 24, ../../scss/_form.scss */
 select,
 textarea,
 input[type="text"],
@@ -998,7 +998,7 @@ select {
   padding: 4px 0;
   vertical-align: middle;
 }
-/* line 94, ../../scss/_form.scss */
+/* line 95, ../../scss/_form.scss */
 .or-item-input.stacked-label input,
 .or-item-input.stacked-label textarea {
   -webkit-border-radius: 2px;
@@ -1143,6 +1143,7 @@ img {
     -webkit-transform: rotate(360deg);
   }
 }
+
 @-moz-keyframes spin {
   /* line 4, ../../scss/_spinner.scss */
   from {
@@ -1154,6 +1155,7 @@ img {
     -moz-transform: rotate(360deg);
   }
 }
+
 @keyframes spin {
   /* line 4, ../../scss/_spinner.scss */
   from {
@@ -1173,6 +1175,7 @@ img {
     transform: rotate(360deg);
   }
 }
+
 /* line 42, ../../scss/_spinner.scss */
 .spinner {
   border: 4px solid #eeeeee;
@@ -1278,7 +1281,7 @@ input[type="range"] {
   height: 35px;
   outline: none;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cccccc), color-stop(100%, #cccccc));
-  background: linear-gradient(to right, #cccccc 0%, #cccccc 100%);
+  background: linear, to right, #cccccc 0%, #cccccc 100%;
   background-position: center;
   background-size: 99% 4px;
   background-repeat: no-repeat;
