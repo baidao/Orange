@@ -1,10 +1,20 @@
-mobile app framework
+#Orange
+Framework for mobile app
 
+#Dependencies
+- Zepto
+- RequireJS
 
-m.5800.com
+#Installing
+```
+bower install Orange --save
+```
 
+#Docs
+http://baidao.github.io/Orange/
 
-todos:
-- demos
+#Todos
+- tests
 
-- docs
+#Built with Orange
+m.5800
