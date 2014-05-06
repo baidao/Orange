@@ -214,12 +214,12 @@ ol, ul {
   padding: 5px;
 }
 
-/* line 7, ../../scss/_grid.scss */
+/* line 8, ../../scss/_grid.scss */
 .row + .row {
   padding-top: 0;
 }
 
-/* line 11, ../../scss/_grid.scss */
+/* line 12, ../../scss/_grid.scss */
 .col {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -232,7 +232,7 @@ ol, ul {
   padding: 5px;
 }
 
-/* line 18, ../../scss/_grid.scss */
+/* line 19, ../../scss/_grid.scss */
 .row-top {
   -webkit-box-align: start;
   -moz-box-align: start;
@@ -245,7 +245,7 @@ ol, ul {
   -ms-flex-align: start;
 }
 
-/* line 21, ../../scss/_grid.scss */
+/* line 22, ../../scss/_grid.scss */
 .row-bottom {
   -webkit-box-align: end;
   -moz-box-align: end;
@@ -258,7 +258,7 @@ ol, ul {
   -ms-flex-align: end;
 }
 
-/* line 24, ../../scss/_grid.scss */
+/* line 25, ../../scss/_grid.scss */
 .row-center {
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -271,7 +271,7 @@ ol, ul {
   -ms-flex-align: center;
 }
 
-/* line 28, ../../scss/_grid.scss */
+/* line 29, ../../scss/_grid.scss */
 .col-top {
   -webkit-align-self: flex-start;
   -moz-align-self: flex-start;
@@ -279,7 +279,7 @@ ol, ul {
   -ms-flex-item-align: start;
 }
 
-/* line 31, ../../scss/_grid.scss */
+/* line 32, ../../scss/_grid.scss */
 .col-bottom {
   -webkit-align-self: flex-end;
   -moz-align-self: flex-end;
@@ -287,7 +287,7 @@ ol, ul {
   -ms-flex-item-align: end;
 }
 
-/* line 34, ../../scss/_grid.scss */
+/* line 35, ../../scss/_grid.scss */
 .col-center {
   -webkit-align-self: center;
   -moz-align-self: center;
@@ -295,52 +295,52 @@ ol, ul {
   -ms-flex-item-align: center;
 }
 
-/* line 38, ../../scss/_grid.scss */
+/* line 39, ../../scss/_grid.scss */
 .col-offset-10 {
   margin-left: 10%;
 }
 
-/* line 41, ../../scss/_grid.scss */
+/* line 42, ../../scss/_grid.scss */
 .col-offset-20 {
   margin-left: 20%;
 }
 
-/* line 44, ../../scss/_grid.scss */
+/* line 45, ../../scss/_grid.scss */
 .col-offset-25 {
   margin-left: 25%;
 }
 
-/* line 47, ../../scss/_grid.scss */
-.col-offset-33, .col-offset-34 {
+/* line 48, ../../scss/_grid.scss */
+.col-offset-33 {
   margin-left: 33.3333%;
 }
 
-/* line 50, ../../scss/_grid.scss */
+/* line 51, ../../scss/_grid.scss */
 .col-offset-50 {
   margin-left: 50%;
 }
 
-/* line 53, ../../scss/_grid.scss */
-.col-offset-66, .col-offset-67 {
+/* line 54, ../../scss/_grid.scss */
+.col-offset-66 {
   margin-left: 66.6666%;
 }
 
-/* line 56, ../../scss/_grid.scss */
+/* line 57, ../../scss/_grid.scss */
 .col-offset-75 {
   margin-left: 75%;
 }
 
-/* line 59, ../../scss/_grid.scss */
+/* line 60, ../../scss/_grid.scss */
 .col-offset-80 {
   margin-left: 80%;
 }
 
-/* line 62, ../../scss/_grid.scss */
+/* line 63, ../../scss/_grid.scss */
 .col-offset-90 {
   margin-left: 90%;
 }
 
-/* line 66, ../../scss/_grid.scss */
+/* line 67, ../../scss/_grid.scss */
 .col-10 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 10%;
@@ -351,7 +351,7 @@ ol, ul {
   max-width: 10%;
 }
 
-/* line 70, ../../scss/_grid.scss */
+/* line 71, ../../scss/_grid.scss */
 .col-20 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 20%;
@@ -362,7 +362,7 @@ ol, ul {
   max-width: 20%;
 }
 
-/* line 74, ../../scss/_grid.scss */
+/* line 75, ../../scss/_grid.scss */
 .col-25 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 25%;
@@ -373,8 +373,8 @@ ol, ul {
   max-width: 25%;
 }
 
-/* line 78, ../../scss/_grid.scss */
-.col-33, .col-34 {
+/* line 79, ../../scss/_grid.scss */
+.col-33 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 33.3333%;
   -moz-box-flex: 0;
@@ -384,7 +384,7 @@ ol, ul {
   max-width: 33.3333%;
 }
 
-/* line 82, ../../scss/_grid.scss */
+/* line 83, ../../scss/_grid.scss */
 .col-50 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 50%;
@@ -395,18 +395,7 @@ ol, ul {
   max-width: 50%;
 }
 
-/* line 86, ../../scss/_grid.scss */
-.col-60 {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 60%;
-  -moz-box-flex: 0;
-  -moz-flex: 0 0 60%;
-  -ms-flex: 0 0 60%;
-  flex: 0 0 60%;
-  max-width: 60%;
-}
-
-/* line 90, ../../scss/_grid.scss */
+/* line 88, ../../scss/_grid.scss */
 .col-66 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 66.6666%;
@@ -417,7 +406,7 @@ ol, ul {
   max-width: 66.6666%;
 }
 
-/* line 94, ../../scss/_grid.scss */
+/* line 92, ../../scss/_grid.scss */
 .col-75 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 75%;
@@ -428,7 +417,7 @@ ol, ul {
   max-width: 75%;
 }
 
-/* line 98, ../../scss/_grid.scss */
+/* line 96, ../../scss/_grid.scss */
 .col-80 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 80%;
@@ -439,7 +428,7 @@ ol, ul {
   max-width: 80%;
 }
 
-/* line 102, ../../scss/_grid.scss */
+/* line 100, ../../scss/_grid.scss */
 .col-90 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 90%;
@@ -493,8 +482,8 @@ p {
   text-align: center;
   vertical-align: top;
   white-space: nowrap;
-  color: rgba(247, 247, 247, 0.98);
-  border: 1px solid rgba(247, 247, 247, 0.98);
+  color: #929292;
+  border: 1px solid #929292;
   background-color: rgba(247, 247, 247, 0.98);
   padding: 6px 10px;
   -webkit-border-radius: 3px;
@@ -581,6 +570,10 @@ p {
   margin: 10px auto;
 }
 /* line 94, ../../scss/_button.scss */
+.or-btn-group.block {
+  width: 100%;
+}
+/* line 98, ../../scss/_button.scss */
 .or-btn-group .or-btn {
   position: relative;
   display: table-cell;
@@ -589,14 +582,14 @@ p {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-/* line 100, ../../scss/_button.scss */
+/* line 104, ../../scss/_button.scss */
 .or-btn-group .or-btn:first-child {
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
   border-right-width: 0;
 }
-/* line 105, ../../scss/_button.scss */
+/* line 109, ../../scss/_button.scss */
 .or-btn-group .or-btn:last-child {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -604,7 +597,7 @@ p {
   border-width: 1px;
 }
 
-/* line 113, ../../scss/_button.scss */
+/* line 117, ../../scss/_button.scss */
 .or-btn-block {
   display: block;
   width: 100%;
@@ -612,13 +605,13 @@ p {
   margin-bottom: 10px;
 }
 
-/* line 120, ../../scss/_button.scss */
+/* line 124, ../../scss/_button.scss */
 .or-btn-link {
   color: #007aff;
   background-color: transparent;
   border: none;
 }
-/* line 125, ../../scss/_button.scss */
+/* line 129, ../../scss/_button.scss */
 .or-btn-link:active, .or-btn-link.active {
   color: #66afff;
   background-color: transparent;
@@ -691,15 +684,14 @@ p {
 .or-bar.or-bar-nav .or-btn-link {
   top: 0;
   padding: 0;
-  color: #007aff;
   line-height: 44px;
   border: 0;
 }
-/* line 67, ../../scss/_bar.scss */
+/* line 66, ../../scss/_bar.scss */
 .or-bar.or-bar-nav ~ .or-page > .or-page-content {
   border-top: 44px solid transparent;
 }
-/* line 72, ../../scss/_bar.scss */
+/* line 71, ../../scss/_bar.scss */
 .or-bar.or-bar-tab {
   display: table;
   bottom: 0;
@@ -710,7 +702,7 @@ p {
   border-bottom: 0;
   table-layout: fixed;
 }
-/* line 82, ../../scss/_bar.scss */
+/* line 81, ../../scss/_bar.scss */
 .or-bar.or-bar-tab .or-tab-item {
   display: table-cell;
   width: 1%;
@@ -719,22 +711,22 @@ p {
   color: #929292;
   text-align: center;
 }
-/* line 90, ../../scss/_bar.scss */
+/* line 89, ../../scss/_bar.scss */
 .or-bar.or-bar-tab .or-tab-item.active, .or-bar.or-bar-tab .or-tab-item:active {
   color: #007aff;
 }
-/* line 95, ../../scss/_bar.scss */
-.or-bar.or-bar-tab .or-tab-item .or-icon {
+/* line 94, ../../scss/_bar.scss */
+.or-bar.or-bar-tab .or-tab-item > .or-icon {
   display: block;
   padding: 2px 0;
   font-size: 1.5rem;
 }
-/* line 103, ../../scss/_bar.scss */
+/* line 100, ../../scss/_bar.scss */
 .or-bar.or-bar-tab .or-tab-item > .or-label {
   display: block;
   font-size: 0.706rem;
 }
-/* line 109, ../../scss/_bar.scss */
+/* line 106, ../../scss/_bar.scss */
 .or-bar.or-bar-tab.flex {
   display: -webkit-box;
   display: -webkit-flex;
@@ -743,7 +735,7 @@ p {
   display: -ms-flexbox;
   display: flex;
 }
-/* line 111, ../../scss/_bar.scss */
+/* line 108, ../../scss/_bar.scss */
 .or-bar.or-bar-tab.flex .or-tab-item {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -752,9 +744,9 @@ p {
   -ms-flex: 1;
   flex: 1;
 }
-/* line 116, ../../scss/_bar.scss */
+/* line 113, ../../scss/_bar.scss */
 .or-bar.or-bar-tab ~ .or-page > .or-page-content {
-  border-bottom: 50px solid transparent;
+  border-bottom: 48px solid transparent;
 }
 
 /* line 1, ../../scss/_list.scss */
@@ -766,41 +758,40 @@ p {
 /* line 6, ../../scss/_list.scss */
 .or-list .or-section {
   position: relative;
-  padding: 0 12px;
   margin-top: -1px;
+  padding: 0 12px;
   font-size: 0.824rem;
   line-height: 1.625rem;
   color: #000;
   background: rgba(247, 247, 247, 0.98);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* line 19, ../../scss/_list.scss */
+/* line 18, ../../scss/_list.scss */
 .or-list .or-item {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-
-/* line 31, ../../scss/_list.scss */
+/* line 23, ../../scss/_list.scss */
 .or-list .or-item.media {
   overflow: hidden;
   zoom: 1;
 }
-/* line 34, ../../scss/_list.scss */
+/* line 26, ../../scss/_list.scss */
 .or-list .or-item.media .media-body {
   overflow: hidden;
   zoom: 1;
 }
-/* line 39, ../../scss/_list.scss */
+/* line 31, ../../scss/_list.scss */
 .or-list .or-item.media .media-object.pull-left {
   margin-right: 10px;
 }
-/* line 42, ../../scss/_list.scss */
+/* line 34, ../../scss/_list.scss */
 .or-list .or-item.media .media-object.pull-right {
   margin-left: 10px;
 }
-/* line 48, ../../scss/_list.scss */
+/* line 40, ../../scss/_list.scss */
 .or-list .or-item > a {
   position: relative;
   display: block;
@@ -809,29 +800,24 @@ p {
   margin: -11px -15px;
   color: inherit;
 }
-/* line 56, ../../scss/_list.scss */
+/* line 48, ../../scss/_list.scss */
 .or-list .or-item > a:active {
   background-color: #eeeeee;
 }
-/* line 61, ../../scss/_list.scss */
-.or-list .or-item p {
-  margin-bottom: 0;
-}
 
-/* line 70, ../../scss/_list.scss */
+/* line 58, ../../scss/_list.scss */
 .or-cards > li.or-card > a {
   position: relative;
   display: block;
   overflow: hidden;
   color: inherit;
 }
-/* line 76, ../../scss/_list.scss */
+/* line 64, ../../scss/_list.scss */
 .or-cards > li.or-card > a:active {
   background-color: #eeeeee;
 }
 
-
-/* line 92, ../../scss/_list.scss */
+/* line 80, ../../scss/_list.scss */
 .or-card {
   overflow: hidden;
   margin: 10px;
@@ -839,36 +825,35 @@ p {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
 }
-/* line 99, ../../scss/_list.scss */
+/* line 87, ../../scss/_list.scss */
 .or-card .or-list {
   background-image: none;
   margin-bottom: 0;
   border-top: 0;
   border-bottom: 0;
 }
-/* line 104, ../../scss/_list.scss */
+/* line 92, ../../scss/_list.scss */
 .or-card .or-list .or-item:last-child {
   border-bottom: 0;
 }
-/* line 110, ../../scss/_list.scss */
+/* line 98, ../../scss/_list.scss */
 .or-card .or-section:first-child {
   top: 0;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
 }
-/* line 115, ../../scss/_list.scss */
+/* line 103, ../../scss/_list.scss */
 .or-card .or-section:last-child {
-  background-image: none;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
 
-/* line 123, ../../scss/_list.scss */
+/* line 110, ../../scss/_list.scss */
 .or-item {
   padding: 11px 15px;
 }
 
-/* line 127, ../../scss/_list.scss */
+/* line 114, ../../scss/_list.scss */
 .arrow-right > .or-item:after, .arrow-right > .or-card .or-card-footer:after {
   color: #929292;
   content: "";
@@ -1001,19 +986,19 @@ select {
   width: 35%;
   margin-right: 0.5em;
 }
-/* line 82, ../../scss/_form.scss */
+/* line 84, ../../scss/_form.scss */
 .or-item-input.stacked-label {
   display: block;
   background-color: transparent;
   box-shadow: none;
 }
-/* line 87, ../../scss/_form.scss */
+/* line 89, ../../scss/_form.scss */
 .or-item-input.stacked-label .input-label, .or-item-input.stacked-label .icon {
   display: inline-block;
   padding: 4px 0;
   vertical-align: middle;
 }
-/* line 92, ../../scss/_form.scss */
+/* line 94, ../../scss/_form.scss */
 .or-item-input.stacked-label input,
 .or-item-input.stacked-label textarea {
   -webkit-border-radius: 2px;
@@ -1363,9 +1348,4 @@ input[type="range"]::-webkit-slider-thumb:after {
   -ms-flex: 1;
   flex: 1;
   display: block;
-}
-
-
-.or-group-block {
-  width: 100%;
 }
