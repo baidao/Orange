@@ -5,11 +5,11 @@
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Orange : mobile app framework" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="dist/css/orange.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://rawgithub.com/baidao/orange/master/dist/css/orange.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="dist/css/orange.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/prettify/r298/prettify.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+    <link rel="stylesheet" type="text/css" href="stylesheets/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css">
     <title>Orange</title>
   </head>
 
@@ -32,9 +32,53 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+        <h1>Types</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <pre class="prettyprint lang-html">
+              <h1>Title 1</h1>
+              <h2>Title 2</h2>
+              <h3>Title 3</h3>
+              <h4>Title 4</h4>
+              <p>Paragraph...</p>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
+        <h1>Buttons</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <pre class="prettyprint lang-html">
+              <div class="or-page">
+                <div class="or-page-content padding">
+                  <button class="or-btn or-btn-primary">Button</button>
+                  <button class="or-btn or-btn-positive">Button</button>
+                  <button class="or-btn or-btn-negative">Button</button>
+                  <div class="doc-sep"></div>
+                  <button class="or-btn or-btn-primary or-btn-block">Button</button>
+                  <button class="or-btn or-btn-positive or-btn-block">Button</button>
+                  <button class="or-btn or-btn-negative or-btn-block">Button</button>
+                  <button class="or-btn or-btn-primary or-btn-outlined or-btn-block">Button</button>
+                  <button class="or-btn or-btn-positive or-btn-outlined or-btn-block">Button</button>
+                  <button class="or-btn or-btn-negative or-btn-outlined or-btn-block">Button</button>
+                  <button class="or-btn or-btn-link or-btn-block">Button</button>
+                </div>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
         <h1>Bars</h1>
-        <div class="row">
-          <div class="source col-50">
+        <div class="row doc-row">
+          <div class="source col">
             <h3>top and bottom bars</h3>
             <pre class="prettyprint lang-html">
               <!-- header -->
@@ -52,11 +96,33 @@
               </footer>
             </pre>
           </div>
-          <div class="perform col-50">
+          <div class="perform col">
           </div>
         </div>
-        <div class="row">
-          <div class="source col-50">
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>bar items</h3>
+            <pre class="prettyprint lang-html">
+              <!-- header -->
+              <header class="or-bar or-bar-nav">
+                <h1 class="title">Header</h1>
+                <button class="or-btn or-btn-link or-btn-nav pull-left">
+                  Back
+                </button>
+                <button class="or-btn or-btn-link or-btn-nav pull-right">
+                  Menu
+                </button>
+                <button class="or-btn or-btn-link or-btn-nav pull-right">
+                  More
+                </button>
+              </header>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+        <div class="row doc-row">
+          <div class="source col">
             <h3>tab bars</h3>
             <pre class="prettyprint lang-html">
               <!-- content -->
@@ -66,15 +132,396 @@
               </div>
               <!-- tab bars -->
               <footer class="or-bar or-bar-tab">
-                <div class="or-tab-item active">首页</div>
-                <div class="or-tab-item">活动</div>
-                <div class="or-tab-item">咨询</div>
-                <div class="or-tab-item">设置</div>
+                <div class="or-tab-item active">Home</div>
+                <div class="or-tab-item">Activity</div>
+                <div class="or-tab-item">Setting</div>
               </footer>
             </pre>
           </div>
-          <div class="perform col-50">
+          <div class="perform col">
           </div>
+        </div>
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>tab bars with icons</h3>
+            <pre class="prettyprint lang-html">
+              <!-- content -->
+              <div class="or-page">
+                <div class="or-page-content">
+                </div>
+              </div>
+              <!-- tab bars -->
+              <footer class="or-bar or-bar-tab">
+                <div class="or-tab-item active">
+                  <span class="or-icon ion-ios7-person-outline"></span>
+                  <span class="or-label">Home</span>
+                </div>
+                <div class="or-tab-item">
+                  <span class="or-icon ion-ios7-star-outline"></span>
+                  <span class="or-label">Activity</span>
+                </div>
+                <div class="or-tab-item">
+                  <span class="or-icon ion-ios7-gear-outline"></span>
+                  <span class="or-label">Setting</span>
+                </div>
+              </footer>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
+        <h1>List</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>table view</h3>
+            <pre class="prettyprint lang-html">
+              <ul class="or-list">
+                <li class="or-item">
+                  <a>Item1</a>
+                </li>
+                <li class="or-item">
+                  <a>Item2</a>
+                </li>
+                <li class="or-item">
+                  <a>Item3</a>
+                </li>
+              </ul>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>grouped table view</h3>
+            <pre class="prettyprint lang-html">
+              <ul class="or-list">
+                <li class="or-section">
+                  Section1
+                </li>
+                <li class="or-item">
+                  <a>Item1</a>
+                </li>
+                <li class="or-item">
+                  <a>Item2</a>
+                </li>
+                <li class="or-section">
+                  Section2
+                </li>
+                <li class="or-item">
+                  <a>Item3</a>
+                </li>
+              </ul>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>card view</h3>
+            <pre class="prettyprint lang-html">
+              <ul class="or-cards">
+                <li class="or-card">
+                  <div class="or-item">
+                    A Clockwork Orange  A Clockwork Orange   A Clockwork Orange
+                  </div>
+                </li>
+                <li class="or-card">
+                  <div class="or-item">
+                    A Clockwork Orange  A Clockwork Orange  A Clockwork Orange  A Clockwork Orange
+                  </div>
+                </li>
+              </ul>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>card list view</h3>
+            <pre class="prettyprint lang-html">
+              <div class="or-card">
+                <ul class="or-list">
+                  <li class="or-section">
+                    Section1
+                  </li>
+                  <li class="or-item">
+                    A Clockwork Orange
+                  </li>
+                  <li class="or-item">
+                    A Clockwork Orange
+                  </li>
+                  <li class="or-section">
+                    Section2
+                  </li>
+                  <li class="or-item">
+                    A Clockwork Orange
+                  </li>
+                  <li class="or-item">
+                    A Clockwork Orange
+                  </li>
+                </ul>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
+        <h1>Form</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>Inline Form</h3>
+            <pre class="prettyprint lang-html">
+              <div class="or-page">
+                <div class="or-page-content">
+                  <ul class="or-list">
+                    <li class="or-item or-item-input">
+                      <label class="input-label">Email</label>
+                      <input type="email" placeholder="email">
+                    </li>
+                    <li class="or-item or-item-input">
+                      <label class="input-label">Password</label>
+                      <input type="password" placeholder="password">
+                    </li>
+                    <li class="or-item">
+                      <button class="or-btn or-btn-link or-btn-block">Submit</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+        <div class="row doc-row">
+          <div class="source col">
+            <h3>Stack forms</h3>
+            <pre class="prettyprint lang-html">
+              <div class="or-page">
+                <div class="or-page-content">
+                  <ul class="or-list">
+                    <li class="or-item or-item-input stacked-label">
+                      <label class="input-label">Email</label>
+                      <input type="email" placeholder="email">
+                    </li>
+                    <li class="or-item or-item-input stacked-label">
+                      <label class="input-label">Password</label>
+                      <input type="password" placeholder="password">
+                    </li>
+                    <li class="or-item">
+                      <button class="or-btn or-btn-link or-btn-block">Submit</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
+        <h1>Grid</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <pre class="prettyprint lang-html">
+              <div class="row">
+                <div class="col">
+                  <div class="doc-col-inner">
+                    col
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="doc-col-inner">
+                    col
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="doc-col-inner">
+                    col
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-50">
+                  <div class="doc-col-inner">
+                    col-50
+                  </div>
+                </div>
+                <div class="col col-50">
+                  <div class="doc-col-inner">
+                    col-50
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-33">
+                  <div class="doc-col-inner">
+                    col-33
+                  </div>
+                </div>
+                <div class="col col-33">
+                  <div class="doc-col-inner">
+                    col-33
+                  </div>
+                </div>
+                <div class="col col-33">
+                  <div class="doc-col-inner">
+                    col-33
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-25">
+                  <div class="doc-col-inner">
+                    col-25
+                  </div>
+                </div>
+                <div class="col col-25">
+                  <div class="doc-col-inner">
+                    col-25
+                  </div>
+                </div>
+                <div class="col col-25 col-offset-25">
+                  <div class="doc-col-inner">
+                    col-25
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="height: 150px">
+                <div class="col col-top">
+                  <div class="doc-col-inner">
+                    col
+                  </div>
+                </div>
+                <div class="col col-center">
+                  <div class="doc-col-inner">
+                   col
+                  </div>
+                </div>
+                <div class="col col-bottom">
+                  <div class="doc-col-inner">
+                    col <br>
+                  </div>
+                </div>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
+
+        <h1>Image Box</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <pre class="prettyprint lang-html">
+              <div class="or-image-box">
+                <div class="or-image-content doc-image-content">
+                  1:1
+                </div>
+              </div>
+              <div class="doc-sep"></div>
+              <div class="or-image-box ratio16_9">
+                <div class="or-image-content doc-image-content">
+                  16:9
+                </div>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col">
+          </div>
+        </div>
+
+
+
+
+        <h1>Segement Control (JS) </h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <pre class="prettyprint lang-html">
+              <ul class="or-btn-group">
+                <li class="or-btn or-btn-outlined or-btn-primary active" data-role='segmentcontrol'>
+                  List1
+                </li>
+                <li class="or-btn or-btn-outlined or-btn-primary" data-role='segmentcontrol'>
+                  List2
+                </li>
+                <li class="or-btn or-btn-outlined or-btn-primary" data-role='segmentcontrol'>
+                  List3
+                </li>
+              </ul>
+              <div class="doc-sep"></div>
+              <ul class="or-btn-group or-group-block">
+                <li class="or-btn or-btn-outlined or-btn-primary active" data-role='segmentcontrol'>
+                  List1
+                </li>
+                <li class="or-btn or-btn-outlined or-btn-primary" data-role='segmentcontrol'>
+                  List2
+                </li>
+                <li class="or-btn or-btn-outlined or-btn-primary" data-role='segmentcontrol'>
+                  List3
+                </li>
+              </ul>
+            </pre>
+          </div>
+          <div class="perform col"></div>
+        </div>
+
+
+
+
+        <h1>Carousel (JS  && Only Touchs)</h1>
+        <div class="row doc-row">
+          <div class="source col">
+            <pre class="prettyprint lang-html">
+              <div class="or-carousel">
+                <div class="or-carousel-inner">
+                  <div class="or-carousel-item or-image-box ratio16_9">
+                    <div class="or-image-content doc-image-content" style="background-color:red;">
+                      1
+                    </div>
+                  </div>
+                  <div class="or-carousel-item or-image-box ratio16_9">
+                    <div class="or-image-content doc-image-content" style="background-color:orange;">
+                      2
+                    </div>
+                  </div>
+                  <div class="or-carousel-item or-image-box ratio16_9">
+                    <div class="or-image-content doc-image-content" style="background-color:green;">
+                      3
+                    </div>
+                  </div>
+                </div>
+                <ol class="or-carousel-controls">
+                  <li data-slide="0" class="active"></li>
+                  <li data-slide="1"></li>
+                  <li data-slide="2"></li>
+                </ol>
+              </div>
+            </pre>
+          </div>
+          <div class="perform col"></div>
+        </div>
+
+
+
+
       </section>
     </div>
 

@@ -205,6 +205,24 @@ pre {
   position: absolute !important;
 }
 
-.row {
+.doc-sep {
+  margin: 10px;
+}
+
+.doc-row {
   margin-bottom: 20px;
+}
+
+.doc-col-inner {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #ddd;
+}
+
+.doc-image-content {
+  font-size: 2rem;
+  color: #fff;
+  background-color: black;
+  padding: 10px;
+  text-align: center;
 }
