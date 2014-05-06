@@ -8,7 +8,7 @@
   text-align: center;
   vertical-align: top;
   white-space: nowrap;
-  color: $chrome-color;
+  color: $default-color;
   border: 1px solid $chrome-color;
   background-color: $chrome-color;
   padding: 6px 10px;
@@ -90,6 +90,10 @@
   border-color: rgba(0, 0, 0, 0);
   white-space: nowrap;
   margin: 10px auto;
+
+  &.block {
+    width: 100%;
+  }
 
   .or-btn {
     position: relative;

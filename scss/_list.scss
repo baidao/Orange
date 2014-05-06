@@ -5,28 +5,20 @@
 
   .or-section {
     position: relative;
+    margin-top: -1px;
     padding: 0 12px;
-    margin: 0;
     font-size: 0.824rem;
-    line-height: 26px;
+    line-height: 1.625rem;
     color: #000;
     background: $chrome-color;
-    border-width: 1px 0;
-    box-shadow: none;
+    border-top: $border-default;
     border-bottom: $border-default;
   }
 
   .or-item {
     position: relative;
     overflow: hidden;
-    & +.or-item {
-      border-top: $border-default;
-    }
-
-
-    &:last-child {
-      background-image: none;
-    }
+    border-bottom: $border-default;
 
     &.media {
       overflow: hidden;
@@ -57,10 +49,6 @@
         background-color: $table-selected-color;
       }
     }
-
-    p {
-      margin-bottom: 0;
-    }
   }
 }
 
@@ -78,14 +66,14 @@
       }
     }
 
-    .or-card-footer, .or-card-header {
-      position: relative;
-      overflow: hidden;
-      padding: 11px 15px;
-      p {
-        margin-bottom: 0;
-      }
-    }
+    // .or-card-footer, .or-card-header {
+    //   position: relative;
+    //   overflow: hidden;
+    //   padding: 11px 15px;
+    //   p {
+    //     margin-bottom: 0;
+    //   }
+    // }
   }
 }
 
@@ -113,7 +101,6 @@
       border-top-left-radius: $border-radius;
     }
     &:last-child {
-      background-image: none;
       border-bottom-right-radius: $border-radius;
       border-bottom-left-radius: $border-radius;
     }
