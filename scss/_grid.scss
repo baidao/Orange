@@ -2,6 +2,7 @@
   @include display-flex();
   @include align-items(center);
   width: 100%;
+  padding: 5px;
 }
 
 .row + .row {
@@ -12,8 +13,8 @@
   @include flex(1);
   display: block;
   width: 100%;
+  padding: 5px;
 }
-
 
 .row-top {
   @include align-items(flex-start);
@@ -44,13 +45,13 @@
 .col-offset-25 {
   margin-left: 25%;
 }
-.col-offset-33, .col-offset-34 {
+.col-offset-33 {
   margin-left: 33.3333%;
 }
 .col-offset-50 {
   margin-left: 50%;
 }
-.col-offset-66, .col-offset-67 {
+.col-offset-66 {
   margin-left: 66.6666%;
 }
 .col-offset-75 {
@@ -75,7 +76,7 @@
   @include flex(0, 0, 25%);
   max-width: 25%;
 }
-.col-33, .col-34 {
+.col-33 {
   @include flex(0, 0, 33.3333%);
   max-width: 33.3333%;
 }
@@ -83,10 +84,7 @@
   @include flex(0, 0, 50%);
   max-width: 50%;
 }
-.col-60 {
-  @include flex(0, 0, 60%);
-  max-width: 60%;
-}
+
 .col-66 {
   @include flex(0, 0, 66.6666%);
   max-width: 66.6666%;

@@ -75,7 +75,9 @@ select {
   }
 
   .input-label {
-    @include flex(0, 0, auto);
+    @include flex(0, 0, 80px);
+    max-width: 160px;
+    width: 35%;
     margin-right: 0.5em;
   }
 
