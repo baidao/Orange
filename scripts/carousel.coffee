@@ -64,7 +64,7 @@ define [
         #transform
         transformProperty = $.support.cssProperty 'transform'
         if $.support.hasTransform3d
-          @$inner[0].style[transformProperty] = "translate3d(#{x}px,0, 0)"
+          @$inner[0].style[transformProperty] = "translate3d(#{x}px,0,0)"
         else
           @$inner[0].style[transformProperty] = "translate(#{x}px)"
         @needsUpdate = false
