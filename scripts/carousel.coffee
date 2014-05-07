@@ -49,13 +49,11 @@ define [
 
     enableAnimation: ->
       return if @animating
-      # @$inner.css '-webkit-transition-duration', '0s'
       @$inner.removeClass draggingClass
       @animating = true
 
     disableAnimation: ->
       return unless @animating
-      # @$inner.css '-webkit-transition-duration', ''
       @$inner.addClass draggingClass
       @animating = false
 
@@ -65,8 +63,12 @@ define [
       window.requestAnimationFrame =>
         return unless @needsUpdate
         x = Math.round(@offset + @offsetDrag)
-        @$inner.css '-webkit-transform', "translate3d(#{x}px,0,0)" #todo: detect translate3d..
-        # @$inner.css '-webkit-transform', "translate(#{x}px,0) translateZ(0)"
+        #transform
+        transformProperty = $.support.cssProperty 'transform'
+        if $.support.hasTransform3d
+          @$inner[0].style[transformProperty] = "translate(#{x}px,0) translateZ(0)"
+        else
+          @$inner[0].style[transformProperty] = "translate(#{x}px)"
         @needsUpdate = false
 
     bind: ->
