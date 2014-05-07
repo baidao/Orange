@@ -1,1 +1,894 @@
-(function(){define("os",[],function(){return $.os={ios:function(){return navigator.userAgent.match(/iPhone|iPad|iPod/i)}(),android:function(){return navigator.userAgent.match(/Android/i)}()}})}).call(this),function(){define("transition",[],function(){return $.support.cssProperty=function(e,t){var n,r,i,s,o;t==null&&(t=!0),e=e.charAt(0).toUpperCase()+e.substr(1),i=document.createElement("div").style,r=["Webkit","Moz","o","MS",""];for(s=0,o=r.length;s<o;s++){n=r[s];if((i!=null?i[n+e]:void 0)!==void 0)return t?n+e:!0}return!1},$.support.hasTransform3d=function(){return $.support.cssProperty("perspective")}(),$.support.transition=function(){var e,t;e={WebkitTransition:{start:"webkitTransitionStart",end:"webkitTransitionEnd"},transition:{start:"transitionstart",end:"transitionend"},MSTransition:{start:"mSTransitionStart",end:"mSTransitionEnd"},oTransition:{start:"oTransitionStart",end:"oTransitionEnd"}},t=$.support.cssProperty("transition");if(t)return e[t]}(),$.fn.emulateTransitionEnd=function(e){var t,n;return n=!1,$(this).one($.support.transition.end,function(){return n=!0}),t=function(){if(!n)return $(this).trigger($.support.transition.end)},setTimeout(t,e),this}})}.call(this),function(){define("requestAnimationFrame",[],function(){return function(){var e,t,n;t=0,n=["ms","moz","webkit","o"],e=0;while(e<n.length&&!window.requestAnimationFrame)window.requestAnimationFrame=window[n[e]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[e]+"CancelAnimationFrame"]||window[n[e]+"CancelRequestAnimationFrame"],++e;window.requestAnimationFrame||(window.requestAnimationFrame=function(e,n){var r,i,s;return r=(new Date).getTime(),i=Math.max(0,16-(r-t)),s=window.setTimeout(function(){return e(r+i)},i),t=r+i,s});if(!window.cancelAnimationFrame)return window.cancelAnimationFrame=function(e){return clearTimeout(e)}}()})}.call(this),function(){define("zepto/data",[],function(){return function(e){var t,n,r,i,s,o,u,a;return u=function(t,s){var u,f,l;f=t[o],l=f&&r[f];if(s!==undefined){if(l){if(s in l)return l[s];u=n(s);if(u in l)return l[u]}return i.call(e(t),s)}return l||a(t)},a=function(i,s,u){var a,f;return a=i[o]||(i[o]=++e.uuid),f=r[a]||(r[a]=t(i)),s!==undefined&&(f[n(s)]=u),f},t=function(t){var r;return r={},e.each(t.attributes||s,function(t,i){if(i.name.indexOf("data-")===0)return r[n(i.name.replace("data-",""))]=e.zepto.deserializeValue(i.value)}),r},r={},i=e.fn.data,n=e.camelCase,o=e.expando="Zepto"+ +(new Date),s=[],e.fn.data=function(t,n){return n===undefined?e.isPlainObject(t)?this.each(function(n,r){return e.each(t,function(e,t){return a(r,e,t)})}):this.length===0?undefined:u(this[0],t):this.each(function(){return a(this,t,n)})},e.fn.removeData=function(t){return typeof t=="string"&&(t=t.split(/\s+/)),this.each(function(){var i,s;i=this[o],s=i&&r[i];if(s)return e.each(t||s,function(e){return delete s[t?n(this):e]})})},["remove","empty"].forEach(function(t){var n;return n=e.fn[t],e.fn[t]=function(){var e;return e=this.find("*"),t==="remove"&&(e=e.add(this)),e.removeData(),n.call(this)}})}(Zepto)})}.call(this),function(){define("segmentControl",["./zepto/data"],function(){var e,t,n,r;return t="active",n="show:segmentcontrol",r="shown:segmentcontrol",e=function(){function e(e){this.element=$(e)}return e.prototype.show=function(){var e,i,s,o,u,a=this;if(this.element.hasClass(t))return;e=this.element.parent(),u=this.element.data("target"),o=e.find("."+t)[0],s=$.Event(n,{relatedTarget:o}),this.element.trigger(s);if(s.isDefaultPrevented())return;return i=$(u),this.activate(this.element,e),this.activate(i,i.parent(),function(){var e;return e=$.Event(r,{relatedTarget:o}),a.element.trigger(e)})},e.prototype.activate=function(e,n,r){var i;return i=n.find("."+t),i.removeClass(t),e.addClass(t),r&&r()},e}(),$.Segmentcontrol=e,$.fn.segmentcontrol=function(t){return this.each(function(){var n;n=$(this).data("segmentcontrol"),n||$(this).data("segmentcontrol",n=new e(this));if(typeof t=="string")return n[t]()})},$(document).on("tap",'[data-role="segmentcontrol"]',function(e){return e.preventDefault(),$(this).segmentcontrol("show")})})}.call(this),function(){define("carousel",["./zepto/data","./requestAnimationFrame"],function(){var e,t,n,r,i,s,o,u;return u="slid:carousel",s="or-carousel-inner",n="or-carousel-controls",t="active",i="dragging",o=function(e){return{x:e.targetTouches[0].clientX,y:e.targetTouches[0].clientY}},r=function(e,t){var n;return t==null&&(t=0),n=Array.prototype.slice.call(arguments,2),setTimeout(function(){return e.apply(null,n)},t)},e=function(){function e(e,t){this.options=t,this.$element=$(e),this.$inner=this.$element.find("."+s),this.$items=this.$inner.children(),this.$control=this.$element.find("."+n),this.$controlsItems=this.$control.children(),this.$start=this.$items.eq(0),this.$current=this.$items.eq(this.index),this.index=0,this.length=this.$items.length,this.offset=0,this.offsetDrag=0,this.animating=!1,this.dragging=!1,this.needsUpdate=!1,this.enableAnimation(),this.bind()}return e.prototype.enableAnimation=function(){if(this.animating)return;return this.$inner.removeClass(i),this.animating=!0},e.prototype.disableAnimation=function(){if(!this.animating)return;return this.$inner.addClass(i),this.animating=!1},e.prototype.update=function(){var e=this;if(this.needsUpdate)return;return this.needsUpdate=!0,window.requestAnimationFrame(function(){var t,n;if(!e.needsUpdate)return;return n=Math.round(e.offset+e.offsetDrag),t=$.support.cssProperty("transform"),$.support.hasTransform3d?e.$inner[0].style[t]="translate3d("+n+"px,0,0)":e.$inner[0].style[t]="translate("+n+"px)",e.needsUpdate=!1})},e.prototype.bind=function(){var e,n,i,s,a,f,l,c,h,p,d,v,m,g=this;return i=this.$element.width(),s=!1,e=!1,h=!1,p=!1,d=!1,m=void 0,a=void 0,f=void 0,this.$inner.on("touchstart",v=function(t){return r(function(){var n;return s=!0,e=!1,m=o(t),a=0,f=0,h=!1,n=g.index===0,d=g.index===g.length-1,g.disableAnimation()}),t.preventDefault(),t.stopPropagation(),!1}),this.$inner.on("touchmove",n=function(t){var n;return s&&!e&&(n=o(t),a=m.x-n.x,f=m.y-n.y,h||Math.abs(a)>Math.abs(f)&&Math.abs(a)>g.options.dragRadius?(h=!0,t.preventDefault(),p&&a<0?a=a*-i/(a-i):d&&a>0&&(a=a*i/(a+i)),g.offsetDrag=-a,g.update()):Math.abs(f)>Math.abs(a)&&Math.abs(f)>g.options.dragRadius&&(e=!0)),t.preventDefault(),t.stopPropagation(),!1}),this.$inner.on("touchend",c=function(t){return r(function(){if(s)return s=!1,g.enableAnimation(),!e&&Math.abs(a)>g.options.moveRadius?a>0?g.next():g.prev():(g.offsetDrag=0,g.update())}),t.preventDefault(),t.stopPropagation(),!1}),this.$element.on(u,function(e,n,r){return g.$items.eq(n).removeClass(t),g.$items.eq(r).addClass(t),g.$controlsItems.eq(n).removeClass(t),g.$controlsItems.eq(r).addClass(t)}),l=$.Event(u,{}),this.$element.trigger(l,[0,0]),this.update()},e.prototype.unbind=function(){return this.$inner.off()},e.prototype.moveTo=function(e){var t,n,r,i,s;return r=this.index,e<0?e=0:e>this.length-1&&(e=this.length-1),this.$current=t=this.$items.eq(e),n=this.$current.prop("offsetLeft"),i=this.$start.prop("offsetLeft"),s=-(n-i),this.offset=s,this.offsetDrag=0,this.index=e,this.update(),this.$element.trigger(u,[r,e])},e.prototype.next=function(){return this.moveTo(this.index+1)},e.prototype.prev=function(){return this.moveTo(this.index-1)},e}(),e.DEFAULTS={dragRadius:10,moveRadius:50},$.Carousel=e,$.fn.carousel=function(t){return this.each(function(){var n,r;n=$(this).data("carousel"),r=$.extend({},e.DEFAULTS,$(this).data(),typeof t=="object"&&t),n||$(this).data("carousel",n=new e(this,r));if(typeof t=="string")return n[t]()})}})}.call(this),function(){var e=function(e,t){return function(){return e.apply(t,arguments)}};define("counter",["./zepto/data","./requestAnimationFrame"],function(){var t;return t=function(){function t(t,n){this.count=e(this.count,this),this.element=$(t),this.options=n,this.frameVal=this.from=Number(n.from),this.to=Number(n.to),this.duration=n.duration,this.decimals=Math.max(0,n.decimals),this.dec=Math.pow(10,n.decimals),this.startTime=null}return t.prototype.count=function(e){var t,n,r,i;t=this.from>this.to,this.startTime===null&&(this.startTime=e),r=e-this.startTime,t?(n=this.easeOutExpo(r,0,this.from-this.to,this.duration),this.frameVal=this.from-n):this.frameVal=this.easeOutExpo(r,this.from,this.to-this.from,this.duration),this.frameVal=Math.round(this.frameVal*this.dec)/this.dec,t?this.frameVal=this.frameVal<this.to?this.to:this.frameVal:this.frameVal=this.frameVal>this.to?this.to:this.frameVal,i=this.frameVal.toFixed(this.decimals),this.options.commas&&(i=this.addCommas(i)),this.element.html(i);if(r<this.duration)return requestAnimationFrame(this.count);if(this.onComplete!=null)return this.onComplete()},t.prototype.start=function(e){return this.onComplete=e,!isNaN(this.to)&&!isNaN(this.from)?requestAnimationFrame(this.count):this.element.html("--"),!1},t.prototype.easeOutExpo=function(e,t,n,r){return n*(-Math.pow(2,-10*e/r)+1)*1024/1023+t},t.prototype.reset=function(){return this.element.html(0)},t.prototype.addCommas=function(e){var t,n,r,i;e+="",n=void 0,r=void 0,i=void 0,t=void 0,n=e.split("."),r=n[0],i=n.length>1?"."+n[1]:"",t=/(\d+)(\d{3})/;while(t.test(r))r=r.replace(t,"$1,$2");return r+i},t.DEFAULTS={commas:!1,decimals:0,duration:1e3},t}(),$.Counter=t,$.fn.counter=function(e){return $(this).each(function(){var n,r;n=$(this).data("counter"),r=$.extend({},t.DEFAULTS,$(this).data(),typeof e=="object"&&e),n||(n=new t(this,r),$(this).data("counter",n));if(typeof e=="string")return n[e]();if(r.show)return n.show()})}})}.call(this),function(){define("spinner",["./zepto/data"],function(){var e;return e=function(){function e(e,t){this.element=$(e),this.spinner=$('<div class="icon-loading spinner"/>'),this.isShown=!1}return e.prototype.toggle=function(){return this[this.isShown?"hide":"show"]()},e.prototype.show=function(){return this.spinner.appendTo(this.element).addClass("active"),this.isShown=!0},e.prototype.hide=function(){return this.spinner.removeClass("active"),this.isShown=!1},e}(),e.DEFAULTS={show:!0},$.Spinner=e,$.fn.spinner=function(t){return this.each(function(){var n,r;n=$(this).data("spinner"),r=$.extend({},e.DEFAULTS,$(this).data(),typeof t=="object"&&t),n||(n=new e(this,r),$(this).data("spinner",n));if(typeof t=="string")return n[t]();if(r.show)return n.show()})}})}.call(this),function(){define("dialog",["./zepto/data","./transition"],function(){var t,n;return n="active",t=function(){function t(e,t){this.options=t,this.$element=$(e),this.$backdrop=null,this.isShown=!1}return t.prototype.toggle=function(){return this[this.isShown?"hide":"show"]()},t.prototype.show=function(){var t=this;if(this.isShown)return;$(document).on("touchmove.dialog",function(){return e.preventDefault()}),this.$element.on("tap",'[data-dismiss="dialog"]',this.hide.bind(this)),this.backdrop(function(){return t.$element.show(),$.support.transition&&t.options.effect&&t.$element[0].offsetWidth,t.$element.addClass(n),t.isShown=!0});if(this.options.expires>0)return setTimeout(function(){return t.hide()},this.options.expires)},t.prototype.hide=function(){var e,t=this;if(!this.isShown)return;return $(document).off("touchmove.dialog"),this.$element.removeClass(n).off("tap"),e=function(){return t.backdrop(function(){var e;return t.isShown=!1,(e=t.$backdrop)!=null&&e.remove(),t.$backdrop=null})},$.support.transition&&this.options.effect?this.$element.one($.support.transition.end,e).emulateTransitionEnd(200):e()},t.prototype.backdrop=function(e){return e==null&&(e=function(){}),!this.isShown&&this.options.backdrop?(this.$backdrop=$("<div class='back-drop disable-user-behavior'/>").appendTo(this.$element.parent()),this.$backdrop.on("tap",this.hide.bind(this)),$.support.transition&&this.options.effect?(this.$backdrop[0].offsetWidth,this.$backdrop.one($.support.transition.end,e).emulateTransitionEnd(200)):e(),this.$backdrop.addClass(n)):this.isShown&&this.$backdrop?(this.$backdrop.removeClass(n),$.support.transition&&this.options.effect?this.$backdrop.one($.support.transition.end,e).emulateTransitionEnd(200):e()):e()},t}(),t.DEFAULTS={backdrop:!0,show:!0,expires:0},$.Dialog=t,$.fn.dialog=function(e){return this.each(function(){var n,r;n=$(this).data("dialog"),r=$.extend({},t.DEFAULTS,$(this).data(),typeof e=="object"&&e),n||(n=new t(this,r)),r.cache&&$(this).data("dialog",n);if(typeof e=="string")return n[e]();if(r.show)return n.show()})},$(document).on("tap",'[data-role="dialog"]',function(e){var t,n;return t=$($(this).attr("data-target")),n=t.data("dialog")?"toggle":$.extend({},t.data(),$this.data()),$(this).is("a")&&e.preventDefault(),t.dialog(n,this)})})}.call(this),function(){define("orange",["./os","./transition","./requestAnimationFrame","./segmentControl","./carousel","./counter","./spinner","./dialog"],function(){})}.call(this);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function() {
+  'use strict';
+  var Carousel, activeClass, controlsClass, delay, draggingClass, innerClass, pos, slidEvent;
+
+  require('./zepto/data');
+
+  require('./requestAnimationFrame');
+
+  slidEvent = 'slid:carousel';
+
+  innerClass = 'or-carousel-inner';
+
+  controlsClass = 'or-carousel-controls';
+
+  activeClass = 'active';
+
+  draggingClass = 'dragging';
+
+  pos = function(e) {
+    return {
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY
+    };
+  };
+
+  delay = function(func, wait) {
+    var args;
+    if (wait == null) {
+      wait = 0;
+    }
+    args = Array.prototype.slice.call(arguments, 2);
+    return setTimeout(function() {
+      return func.apply(null, args);
+    }, wait);
+  };
+
+  Carousel = (function() {
+    function Carousel(element, options) {
+      this.options = options;
+      this.$element = $(element);
+      this.$inner = this.$element.find("." + innerClass);
+      this.$items = this.$inner.children();
+      this.$control = this.$element.find("." + controlsClass);
+      this.$controlsItems = this.$control.children();
+      this.$start = this.$items.eq(0);
+      this.$current = this.$items.eq(this.index);
+      this.index = 0;
+      this.length = this.$items.length;
+      this.offset = 0;
+      this.offsetDrag = 0;
+      this.animating = false;
+      this.dragging = false;
+      this.needsUpdate = false;
+      this.enableAnimation();
+      this.bind();
+    }
+
+    Carousel.prototype.enableAnimation = function() {
+      if (this.animating) {
+        return;
+      }
+      this.$inner.removeClass(draggingClass);
+      return this.animating = true;
+    };
+
+    Carousel.prototype.disableAnimation = function() {
+      if (!this.animating) {
+        return;
+      }
+      this.$inner.addClass(draggingClass);
+      return this.animating = false;
+    };
+
+    Carousel.prototype.update = function() {
+      var _this = this;
+      if (this.needsUpdate) {
+        return;
+      }
+      this.needsUpdate = true;
+      return window.requestAnimationFrame(function() {
+        var transformProperty, x;
+        if (!_this.needsUpdate) {
+          return;
+        }
+        x = Math.round(_this.offset + _this.offsetDrag);
+        transformProperty = $.support.cssProperty('transform');
+        if ($.support.hasTransform3d) {
+          _this.$inner[0].style[transformProperty] = "translate3d(" + x + "px,0,0)";
+        } else {
+          _this.$inner[0].style[transformProperty] = "translate(" + x + "px)";
+        }
+        return _this.needsUpdate = false;
+      });
+    };
+
+    Carousel.prototype.bind = function() {
+      var canceled, drag, dragLimit, dragging, dx, dy, ee, end, hold, lockLeft, lockRight, start, xy,
+        _this = this;
+      dragLimit = this.$element.width();
+      dragging = false;
+      canceled = false;
+      hold = false;
+      lockLeft = false;
+      lockRight = false;
+      xy = void 0;
+      dx = void 0;
+      dy = void 0;
+      this.$inner.on('touchstart', start = function(e) {
+        return delay(function() {
+          var lockLef;
+          dragging = true;
+          canceled = false;
+          xy = pos(e);
+          dx = 0;
+          dy = 0;
+          hold = false;
+          lockLef = _this.index === 0;
+          lockRight = _this.index === _this.length - 1;
+          _this.disableAnimation();
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        });
+      });
+      this.$inner.on('touchmove', drag = function(e) {
+        var newXY;
+        if (dragging && !canceled) {
+          newXY = pos(e);
+          dx = xy.x - newXY.x;
+          dy = xy.y - newXY.y;
+          if (hold || Math.abs(dx) > Math.abs(dy) && (Math.abs(dx) > _this.options.dragRadius)) {
+            hold = true;
+            e.preventDefault();
+            if (lockLeft && (dx < 0)) {
+              dx = dx * (-dragLimit) / (dx - dragLimit);
+            } else if (lockRight && (dx > 0)) {
+              dx = dx * dragLimit / (dx + dragLimit);
+            }
+            _this.offsetDrag = -dx;
+            _this.update();
+          } else if ((Math.abs(dy) > Math.abs(dx)) && (Math.abs(dy) > _this.options.dragRadius)) {
+            canceled = true;
+          }
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      });
+      this.$inner.on('touchend', end = function(e) {
+        return delay(function() {
+          if (dragging) {
+            dragging = false;
+            _this.enableAnimation();
+            if (!canceled && (Math.abs(dx) > _this.options.moveRadius)) {
+              if (dx > 0) {
+                _this.next();
+              } else {
+                _this.prev();
+              }
+            } else {
+              _this.offsetDrag = 0;
+              _this.update();
+            }
+          }
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        });
+      });
+      this.$element.on(slidEvent, function(e, prevIndex, nextIndex) {
+        _this.$items.eq(prevIndex).removeClass(activeClass);
+        _this.$items.eq(nextIndex).addClass(activeClass);
+        _this.$controlsItems.eq(prevIndex).removeClass(activeClass);
+        return _this.$controlsItems.eq(nextIndex).addClass(activeClass);
+      });
+      ee = $.Event(slidEvent, {});
+      this.$element.trigger(ee, [0, 0]);
+      return this.update();
+    };
+
+    Carousel.prototype.unbind = function() {
+      return this.$inner.off();
+    };
+
+    Carousel.prototype.moveTo = function(nextIndex) {
+      var $current, currentOffset, prevIndex, startOffset, transitionOffset;
+      prevIndex = this.index;
+      if (nextIndex < 0) {
+        nextIndex = 0;
+      } else if (nextIndex > this.length - 1) {
+        nextIndex = this.length - 1;
+      }
+      this.$current = $current = this.$items.eq(nextIndex);
+      currentOffset = this.$current.prop('offsetLeft');
+      startOffset = this.$start.prop('offsetLeft');
+      transitionOffset = -(currentOffset - startOffset);
+      this.offset = transitionOffset;
+      this.offsetDrag = 0;
+      this.index = nextIndex;
+      this.update();
+      return this.$element.trigger(slidEvent, [prevIndex, nextIndex]);
+    };
+
+    Carousel.prototype.next = function() {
+      return this.moveTo(this.index + 1);
+    };
+
+    Carousel.prototype.prev = function() {
+      return this.moveTo(this.index - 1);
+    };
+
+    return Carousel;
+
+  })();
+
+  Carousel.DEFAULTS = {
+    dragRadius: 10,
+    moveRadius: 50
+  };
+
+  $.Carousel = Carousel;
+
+  $.fn.carousel = function(option) {
+    return this.each(function() {
+      var data, options;
+      data = $(this).data('carousel');
+      options = $.extend({}, Carousel.DEFAULTS, $(this).data(), typeof option === 'object' && option);
+      if (!data) {
+        $(this).data('carousel', (data = new Carousel(this, options)));
+      }
+      if (typeof option === 'string') {
+        return data[option]();
+      }
+    });
+  };
+
+}).call(this);
+
+},{"./requestAnimationFrame":6,"./zepto/data":11}],2:[function(require,module,exports){
+(function() {
+  'use strict';
+  var Counter,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  require('./zepto/data');
+
+  require('./requestAnimationFrame');
+
+  Counter = (function() {
+    function Counter(element, options) {
+      this.count = __bind(this.count, this);
+      this.element = $(element);
+      this.options = options;
+      this.frameVal = this.from = Number(options.from);
+      this.to = Number(options.to);
+      this.duration = options.duration;
+      this.decimals = Math.max(0, options.decimals);
+      this.dec = Math.pow(10, options.decimals);
+      this.startTime = null;
+    }
+
+    Counter.prototype.count = function(timestamp) {
+      var countDown, i, progress, val;
+      countDown = this.from > this.to;
+      if (this.startTime === null) {
+        this.startTime = timestamp;
+      }
+      progress = timestamp - this.startTime;
+      if (countDown) {
+        i = this.easeOutExpo(progress, 0, this.from - this.to, this.duration);
+        this.frameVal = this.from - i;
+      } else {
+        this.frameVal = this.easeOutExpo(progress, this.from, this.to - this.from, this.duration);
+      }
+      this.frameVal = Math.round(this.frameVal * this.dec) / this.dec;
+      if (countDown) {
+        this.frameVal = (this.frameVal < this.to ? this.to : this.frameVal);
+      } else {
+        this.frameVal = (this.frameVal > this.to ? this.to : this.frameVal);
+      }
+      val = this.frameVal.toFixed(this.decimals);
+      if (this.options.commas) {
+        val = this.addCommas(val);
+      }
+      this.element.html(val);
+      if (progress < this.duration) {
+        return requestAnimationFrame(this.count);
+      } else {
+        if (this.onComplete != null) {
+          return this.onComplete();
+        }
+      }
+    };
+
+    Counter.prototype.start = function(callback) {
+      this.onComplete = callback;
+      if (!isNaN(this.to) && !isNaN(this.from)) {
+        requestAnimationFrame(this.count);
+      } else {
+        this.element.html('--');
+      }
+      return false;
+    };
+
+    Counter.prototype.easeOutExpo = function(t, b, c, d) {
+      return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
+    };
+
+    Counter.prototype.reset = function() {
+      return this.element.html(0);
+    };
+
+    Counter.prototype.addCommas = function(nStr) {
+      var rgx, x, x1, x2;
+      nStr += '';
+      x = void 0;
+      x1 = void 0;
+      x2 = void 0;
+      rgx = void 0;
+      x = nStr.split('.');
+      x1 = x[0];
+      x2 = x.length > 1 ? '.' + x[1] : '';
+      rgx = /(\d+)(\d{3})/;
+      while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      }
+      return x1 + x2;
+    };
+
+    Counter.DEFAULTS = {
+      commas: false,
+      decimals: 0,
+      duration: 1000
+    };
+
+    return Counter;
+
+  })();
+
+  $.Counter = Counter;
+
+  $.fn.counter = function(option) {
+    return $(this).each(function() {
+      var data, options;
+      data = $(this).data('counter');
+      options = $.extend({}, Counter.DEFAULTS, $(this).data(), typeof option === 'object' && option);
+      if (!data) {
+        data = new Counter(this, options);
+        $(this).data('counter', data);
+      }
+      if (typeof option === 'string') {
+        return data[option]();
+      } else {
+        if (options.show) {
+          return data.show();
+        }
+      }
+    });
+  };
+
+}).call(this);
+
+},{"./requestAnimationFrame":6,"./zepto/data":11}],3:[function(require,module,exports){
+(function() {
+  'use strict';
+  var Dialog, showClass;
+
+  require('./zepto/data');
+
+  require('./transition');
+
+  showClass = 'active';
+
+  Dialog = (function() {
+    function Dialog(element, options) {
+      this.options = options;
+      this.$element = $(element);
+      this.$backdrop = null;
+      this.isShown = false;
+    }
+
+    Dialog.prototype.toggle = function() {
+      return this[(!this.isShown ? 'show' : 'hide')]();
+    };
+
+    Dialog.prototype.show = function() {
+      var _this = this;
+      if (this.isShown) {
+        return;
+      }
+      $(document).on('touchmove.dialog', function() {
+        return e.preventDefault();
+      });
+      this.$element.on('tap', '[data-dismiss="dialog"]', this.hide.bind(this));
+      this.backdrop(function() {
+        _this.$element.show();
+        if ($.support.transition && _this.options.effect) {
+          _this.$element[0].offsetWidth;
+        }
+        _this.$element.addClass(showClass);
+        return _this.isShown = true;
+      });
+      if (this.options.expires > 0) {
+        return setTimeout(function() {
+          return _this.hide();
+        }, this.options.expires);
+      }
+    };
+
+    Dialog.prototype.hide = function() {
+      var callback,
+        _this = this;
+      if (!this.isShown) {
+        return;
+      }
+      $(document).off('touchmove.dialog');
+      this.$element.removeClass(showClass).off('tap');
+      callback = function() {
+        return _this.backdrop(function() {
+          var _ref;
+          _this.isShown = false;
+          if ((_ref = _this.$backdrop) != null) {
+            _ref.remove();
+          }
+          return _this.$backdrop = null;
+        });
+      };
+      if ($.support.transition && this.options.effect) {
+        return this.$element.one($.support.transition.end, callback).emulateTransitionEnd(200);
+      } else {
+        return callback();
+      }
+    };
+
+    Dialog.prototype.backdrop = function(callback) {
+      if (callback == null) {
+        callback = function() {};
+      }
+      if (!this.isShown && this.options.backdrop) {
+        this.$backdrop = $("<div class='back-drop disable-user-behavior'/>").appendTo(this.$element.parent());
+        this.$backdrop.on('tap', this.hide.bind(this));
+        if ($.support.transition && this.options.effect) {
+          this.$backdrop[0].offsetWidth;
+          this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(200);
+        } else {
+          callback();
+        }
+        return this.$backdrop.addClass(showClass);
+      } else if (this.isShown && this.$backdrop) {
+        this.$backdrop.removeClass(showClass);
+        if ($.support.transition && this.options.effect) {
+          return this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(200);
+        } else {
+          return callback();
+        }
+      } else {
+        return callback();
+      }
+    };
+
+    return Dialog;
+
+  })();
+
+  Dialog.DEFAULTS = {
+    backdrop: true,
+    show: true,
+    expires: 0
+  };
+
+  $.Dialog = Dialog;
+
+  $.fn.dialog = function(toption) {
+    return this.each(function() {
+      var data, options;
+      data = $(this).data('dialog');
+      options = $.extend({}, Dialog.DEFAULTS, $(this).data(), typeof option === 'object' && option);
+      if (!data) {
+        data = new Dialog(this, options);
+      }
+      if (options.cache) {
+        $(this).data('dialog', data);
+      }
+      if (typeof option === 'string') {
+        return data[option]();
+      } else {
+        if (options.show) {
+          return data.show();
+        }
+      }
+    });
+  };
+
+  $(document).on('tap.dialog.data-api', '[data-role="dialog"]', function(e) {
+    var $target, option;
+    $target = $($(this).attr('data-target'));
+    option = ($target.data('dialog') ? 'toggle' : $.extend({}, $target.data(), $this.data()));
+    if ($(this).is('a')) {
+      e.preventDefault();
+    }
+    return $target.dialog(option, this);
+  });
+
+}).call(this);
+
+},{"./transition":10,"./zepto/data":11}],4:[function(require,module,exports){
+(function() {
+  'use strict';
+  require('./os');
+
+  require('./transition');
+
+  require('./requestAnimationFrame');
+
+  require('./segmentControl');
+
+  require('./carousel');
+
+  require('./counter');
+
+  require('./spinner');
+
+  require('./dialog');
+
+}).call(this);
+
+},{"./carousel":1,"./counter":2,"./dialog":3,"./os":5,"./requestAnimationFrame":6,"./segmentControl":7,"./spinner":9,"./transition":10}],5:[function(require,module,exports){
+(function() {
+  'use strict';
+  $.os = {
+    ios: (function() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    })(),
+    android: (function() {
+      return navigator.userAgent.match(/Android/i);
+    })()
+  };
+
+}).call(this);
+
+},{}],6:[function(require,module,exports){
+(function() {
+  'use strict';
+  var index, lastTime, vendors;
+
+  lastTime = 0;
+
+  vendors = ['ms', 'moz', 'webkit', 'o'];
+
+  index = 0;
+
+  while (index < vendors.length && !window.requestAnimationFrame) {
+    window.requestAnimationFrame = window[vendors[index] + 'RequestAnimationFrame'];
+    window.cancelAnimationFrame = window[vendors[index] + 'CancelAnimationFrame'] || window[vendors[index] + 'CancelRequestAnimationFrame'];
+    ++index;
+  }
+
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function(callback, element) {
+      var currTime, timeToCall, timerId;
+      currTime = new Date().getTime();
+      timeToCall = Math.max(0, 16 - (currTime - lastTime));
+      timerId = window.setTimeout(function() {
+        return callback(currTime + timeToCall);
+      }, timeToCall);
+      lastTime = currTime + timeToCall;
+      return timerId;
+    };
+  }
+
+  if (!window.cancelAnimationFrame) {
+    window.cancelAnimationFrame = function(timerId) {
+      return clearTimeout(timerId);
+    };
+  }
+
+}).call(this);
+
+},{}],7:[function(require,module,exports){
+(function() {
+  'use strict';
+  var Segmentcontrol, activeClass, showEvent, shownEvent;
+
+  require('./zepto/data');
+
+  activeClass = 'active';
+
+  showEvent = 'show:segmentcontrol';
+
+  shownEvent = 'shown:segmentcontrol';
+
+  Segmentcontrol = (function() {
+    function Segmentcontrol(element) {
+      this.element = $(element);
+    }
+
+    Segmentcontrol.prototype.show = function() {
+      var $parent, $target, e, previous, selector,
+        _this = this;
+      if (this.element.hasClass(activeClass)) {
+        return;
+      }
+      $parent = this.element.parent();
+      selector = this.element.data('target');
+      previous = $parent.find('.' + activeClass)[0];
+      e = $.Event(showEvent, {
+        relatedTarget: previous
+      });
+      this.element.trigger(e);
+      if (e.isDefaultPrevented()) {
+        return;
+      }
+      $target = $(selector);
+      this.activate(this.element, $parent);
+      return this.activate($target, $target.parent(), function() {
+        var ee;
+        ee = $.Event(shownEvent, {
+          relatedTarget: previous
+        });
+        return _this.element.trigger(ee);
+      });
+    };
+
+    Segmentcontrol.prototype.activate = function($element, $container, callback) {
+      var $active;
+      $active = $container.find("." + activeClass);
+      $active.removeClass(activeClass);
+      $element.addClass(activeClass);
+      return callback && callback();
+    };
+
+    return Segmentcontrol;
+
+  })();
+
+  $.Segmentcontrol = Segmentcontrol;
+
+  $.fn.segmentcontrol = function(option) {
+    return this.each(function() {
+      var data;
+      data = $(this).data('segmentcontrol');
+      if (!data) {
+        $(this).data('segmentcontrol', (data = new Segmentcontrol(this)));
+      }
+      if (typeof option === 'string') {
+        return data[option]();
+      }
+    });
+  };
+
+  $(document).on('tap.segmentcontrol.data-api', '[data-role="segmentcontrol"]', function(e) {
+    e.preventDefault();
+    return $(this).segmentcontrol('show');
+  });
+
+}).call(this);
+
+},{"./zepto/data":11}],8:[function(require,module,exports){
+module.exports=require(7)
+},{"./zepto/data":11}],9:[function(require,module,exports){
+(function() {
+  'use strict';
+  var Spinner, activeClass;
+
+  require('./zepto/data');
+
+  activeClass = 'active';
+
+  Spinner = (function() {
+    function Spinner(element, options) {
+      this.element = $(element);
+      this.spinner = $('<div class="icon-loading spinner"/>');
+      this.isShown = false;
+    }
+
+    Spinner.prototype.toggle = function() {
+      return this[!!this.isShown ? 'hide' : 'show']();
+    };
+
+    Spinner.prototype.show = function() {
+      this.spinner.appendTo(this.element).addClass(activeClass);
+      return this.isShown = true;
+    };
+
+    Spinner.prototype.hide = function() {
+      this.spinner.removeClass(activeClass);
+      return this.isShown = false;
+    };
+
+    return Spinner;
+
+  })();
+
+  Spinner.DEFAULTS = {
+    show: true
+  };
+
+  $.Spinner = Spinner;
+
+  $.fn.spinner = function(option) {
+    return this.each(function() {
+      var data, options;
+      data = $(this).data('spinner');
+      options = $.extend({}, Spinner.DEFAULTS, $(this).data(), typeof option === 'object' && option);
+      if (!data) {
+        data = new Spinner(this, options);
+        $(this).data('spinner', data);
+      }
+      if (typeof option === 'string') {
+        return data[option]();
+      } else {
+        if (options.show) {
+          return data.show();
+        }
+      }
+    });
+  };
+
+}).call(this);
+
+},{"./zepto/data":11}],10:[function(require,module,exports){
+(function() {
+  'use strict';
+  $.support.cssProperty = function(prop, rprop) {
+    var pre, prefixes, style, _i, _len;
+    if (rprop == null) {
+      rprop = true;
+    }
+    prop = prop.charAt(0).toUpperCase() + prop.substr(1);
+    style = document.createElement('div').style;
+    prefixes = ['Webkit', 'Moz', 'o', 'MS', ''];
+    for (_i = 0, _len = prefixes.length; _i < _len; _i++) {
+      pre = prefixes[_i];
+      if ((style != null ? style[pre + prop] : void 0) !== void 0) {
+        if (!!rprop) {
+          return pre + prop;
+        } else {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  $.support.hasTransform3d = (function() {
+    return $.support.cssProperty('perspective');
+  })();
+
+  $.support.transition = (function() {
+    var events, property;
+    events = {
+      WebkitTransition: {
+        start: 'webkitTransitionStart',
+        end: 'webkitTransitionEnd'
+      },
+      transition: {
+        start: 'transitionstart',
+        end: 'transitionend'
+      },
+      MSTransition: {
+        start: 'mSTransitionStart',
+        end: 'mSTransitionEnd'
+      },
+      oTransition: {
+        start: 'oTransitionStart',
+        end: 'oTransitionEnd'
+      }
+    };
+    property = $.support.cssProperty('transition');
+    if (property) {
+      return events[property];
+    }
+  })();
+
+  $.fn.emulateTransitionEnd = function(duration) {
+    var callback, called;
+    called = false;
+    $(this).one($.support.transition.end, function() {
+      return called = true;
+    });
+    callback = function() {
+      if (!called) {
+        return $(this).trigger($.support.transition.end);
+      }
+    };
+    setTimeout(callback, duration);
+    return this;
+  };
+
+}).call(this);
+
+},{}],11:[function(require,module,exports){
+(function() {
+  'use strict';
+  (function($) {
+    var attributeData, camelize, data, dataAttr, emptyArray, exp, getData, setData;
+    getData = function(node, name) {
+      var camelName, id, store;
+      id = node[exp];
+      store = id && data[id];
+      if (name !== undefined) {
+        if (store) {
+          if (name in store) {
+            return store[name];
+          }
+          camelName = camelize(name);
+          if (camelName in store) {
+            return store[camelName];
+          }
+        }
+        return dataAttr.call($(node), name);
+      } else {
+        return store || setData(node);
+      }
+    };
+    setData = function(node, name, value) {
+      var id, store;
+      id = node[exp] || (node[exp] = ++$.uuid);
+      store = data[id] || (data[id] = attributeData(node));
+      if (name !== undefined) {
+        store[camelize(name)] = value;
+      }
+      return store;
+    };
+    attributeData = function(node) {
+      var store;
+      store = {};
+      $.each(node.attributes || emptyArray, function(i, attr) {
+        if (attr.name.indexOf("data-") === 0) {
+          return store[camelize(attr.name.replace("data-", ""))] = $.zepto.deserializeValue(attr.value);
+        }
+      });
+      return store;
+    };
+    data = {};
+    dataAttr = $.fn.data;
+    camelize = $.camelCase;
+    exp = $.expando = "Zepto" + (+new Date());
+    emptyArray = [];
+    $.fn.data = function(name, value) {
+      if (value === undefined) {
+        if ($.isPlainObject(name)) {
+          return this.each(function(i, node) {
+            return $.each(name, function(key, value) {
+              return setData(node, key, value);
+            });
+          });
+        } else {
+          if (this.length === 0) {
+            return undefined;
+          } else {
+            return getData(this[0], name);
+          }
+        }
+      } else {
+        return this.each(function() {
+          return setData(this, name, value);
+        });
+      }
+    };
+    $.fn.removeData = function(names) {
+      if (typeof names === "string") {
+        names = names.split(/\s+/);
+      }
+      return this.each(function() {
+        var id, store;
+        id = this[exp];
+        store = id && data[id];
+        if (store) {
+          return $.each(names || store, function(key) {
+            return delete store[(names ? camelize(this) : key)];
+          });
+        }
+      });
+    };
+    return ["remove", "empty"].forEach(function(methodName) {
+      var origFn;
+      origFn = $.fn[methodName];
+      return $.fn[methodName] = function() {
+        var elements;
+        elements = this.find("*");
+        if (methodName === "remove") {
+          elements = elements.add(this);
+        }
+        elements.removeData();
+        return origFn.call(this);
+      };
+    });
+  })(Zepto);
+
+}).call(this);
+
+},{}]},{},[1,2,3,4,5,6,8,9,10])

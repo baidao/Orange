@@ -1,9 +1,13 @@
 #Orange
 Framework for mobile app
 
+## Features
+* Mobile
+* Custom build with browserify and bower
+
 #Dependencies
-- Zepto
-- RequireJS
+you should include zepto.js first
+
 
 #Installing
 ```
@@ -14,7 +18,7 @@ bower install Orange --save
 http://baidao.github.io/Orange/
 
 #Todos
-- tests
+* tests
 
 #Built with Orange
 m.5800

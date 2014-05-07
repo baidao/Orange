@@ -30,6 +30,16 @@ module.exports = (grunt) ->
         "docs/dist"
       ]
 
+    browserify:
+      dist:
+        files: '<%= meta.distPath %>js/<%= pkg.name %>.js': ['.tmp/scripts/*.js']
+        options: {}
+
+    uglify:
+      dist:
+        files:
+          '<%= meta.distPath %>js/<%= pkg.name %>.min.js': ['<%= meta.distPath %>js/<%= pkg.name %>.js']
+
     coffee:
       dist:
         files: [
@@ -40,13 +50,6 @@ module.exports = (grunt) ->
           extDot: "last"
           ext: ".js"
         ]
-
-    requirejs:
-      dist:
-        options:
-          name: "orange"
-          baseUrl: ".tmp/scripts"
-          out: "<%= meta.distPath %>js/orange.js"
 
     compass:
       options:
@@ -88,7 +91,8 @@ module.exports = (grunt) ->
 
   grunt.registerTask "dist-js", [
     "coffee"
-    "requirejs"
+    "browserify"
+    "uglify"
   ]
 
   grunt.registerTask "dist", [

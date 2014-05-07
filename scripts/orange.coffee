@@ -1,13 +1,10 @@
 'use strict'
 
-define [
-  './os'
-  './transition'
-  './requestAnimationFrame'
-  './segmentControl'
-  './carousel'
-  './counter'
-  './spinner'
-  './dialog'
-], ->
-  #
+require  './os'
+require  './transition'
+require  './requestAnimationFrame'
+require  './segmentControl'
+require  './carousel'
+require  './counter'
+require  './spinner'
+require  './dialog'
