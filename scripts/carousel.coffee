@@ -11,10 +11,8 @@ define [
   draggingClass = 'dragging'
 
   pos = (e) ->
-    #get event postition
-    if e.targetTouches and (e.targetTouches.length >= 1)
-      x: e.targetTouches[0].clientX
-      y: e.targetTouches[0].clientY
+    x: e.targetTouches[0].clientX
+    y: e.targetTouches[0].clientY
 
   delay = (func, wait=0) ->
     #from underscore.js
@@ -66,7 +64,7 @@ define [
         #transform
         transformProperty = $.support.cssProperty 'transform'
         if $.support.hasTransform3d
-          @$inner[0].style[transformProperty] = "translate(#{x}px,0) translateZ(0)"
+          @$inner[0].style[transformProperty] = "translate3d(#{x}px,0, 0)"
         else
           @$inner[0].style[transformProperty] = "translate(#{x}px)"
         @needsUpdate = false
@@ -93,9 +91,9 @@ define [
           lockLef = @index is 0
           lockRight = @index is @length - 1
           @disableAnimation()
-          e.preventDefault()
-          e.stopPropagation()
-          false
+        e.preventDefault()
+        e.stopPropagation()
+        false
 
       @$inner.on 'touchmove', drag = (e) =>
         if dragging and !canceled
@@ -103,7 +101,7 @@ define [
           dx = xy.x - newXY.x
           dy = xy.y - newXY.y
           if hold or Math.abs(dx) > Math.abs(dy) and (Math.abs(dx) > @options.dragRadius)
-            hold = tue
+            hold = true
             e.preventDefault()
             if lockLeft and (dx < 0)
               dx = dx * (-dragLimit) / (dx - dragLimit)
@@ -130,9 +128,9 @@ define [
             else
               @offsetDrag = 0
               @update()
-          e.preventDefault()
-          e.stopPropagation()
-          false
+        e.preventDefault()
+        e.stopPropagation()
+        false
 
       @$element.on slidEvent, (e, prevIndex, nextIndex) =>
         @$items.eq(prevIndex).removeClass activeClass
