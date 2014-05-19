@@ -1,25 +1,6 @@
 {
-  "name": "Orange",
+  "name": "lotto",
   "version": "0.0.1",
-  "main": [
-    "./dist/css/orange.css",
-    "./dist/css/orange.js"
-  ],
-  "ignore": [
-    "scss",
-    "scripts",
-    "docs",
-    "demo",
-    "spec",
-    ".bowerrc",
-    ".gitignore",
-    ".jshintignore",
-    ".jshintrc",
-    "bower.json",
-    "Gruntfile.coffee",
-    "Gruntfile.js",
-    "package.json"
-  ],
   "devDependencies": {
     "bourbon": "3.2.0"
   }

@@ -111,16 +111,3 @@
   padding: 11px 15px;
 }
 
-.arrow-right > .or-item:after, .arrow-right > .or-card .or-card-footer:after {
-  color: $default-color;
-  content: "";
-  position: absolute;
-  top: 21px;
-  right: 20px;
-  width: 7px;
-  height: 7px;
-  margin-top: -5px;
-  border-style: solid;
-  border-width: 2px 2px 0 0;
-  -webkit-transform: rotate(45deg);
-}
