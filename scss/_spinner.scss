@@ -39,7 +39,7 @@ $spinner-sides: 1 !default;
   }
 }
 
-.spinner {
+.or-spinner {
   @include spinner();
   @include position(absolute, 50% "" "" 50%);
   // @include transform(translate3d(-50%, -50%, 0) scale3d(1,1,1) !important);

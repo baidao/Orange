@@ -7,7 +7,7 @@ activeClass = 'active'
 class Spinner
   constructor: (element, options)->
     @element = $(element)
-    @spinner = $('<div class="icon-loading spinner"/>')
+    @spinner = $('<div class="or-spinner"/>')
     @isShown = false
 
   toggle: ->

@@ -848,7 +848,7 @@ img {
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-.spinner {
+.or-spinner {
   border: 4px solid #eeeeee;
   font-size: 40px;
   width: 1em;
@@ -868,7 +868,7 @@ img {
   margin-left: -.5em;
   margin-top: -.5em;
   display: none; }
-  .spinner.active {
+  .or-spinner.active {
     display: block; }
 
 .or-toggle {
