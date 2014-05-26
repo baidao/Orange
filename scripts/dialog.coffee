@@ -4,6 +4,7 @@ require './zepto/data'
 require './transition'
 
 showClass = 'active'
+dismssEvent = 'tap.dismiss.dialog'
 
 class Dialog
   constructor: (element, options) ->
@@ -20,7 +21,7 @@ class Dialog
     $(document).on 'touchmove.dialog', -> return e.preventDefault()
     @$element.on 'tap', '[data-dismiss="dialog"]', @hide.bind @
     @backdrop =>
-      @$element.show()
+      # @$element.show()
       @$element[0].offsetWidth if $.support.transition and @options.effect #reflow
       @$element.addClass showClass
       @isShown = true
@@ -35,7 +36,7 @@ class Dialog
     $(document).off 'touchmove.dialog'
     @$element
       .removeClass(showClass)
-      .off('tap')
+      .off(dismssEvent)
 
     callback = =>
       @backdrop =>
@@ -53,7 +54,9 @@ class Dialog
   backdrop: (callback=->) ->
     if !@isShown and @options.backdrop #show
       @$backdrop = $("<div class='back-drop disable-user-behavior'/>").appendTo(@$element.parent())
-      @$backdrop.on 'tap', @hide.bind @
+      @$element.on dismssEvent, (e) =>
+        return if e.target isnt e.currentTarget
+        @hide.call @
       if $.support.transition and @options.effect
         @$backdrop[0].offsetWidth
         @$backdrop
@@ -93,7 +96,7 @@ $.fn.dialog = (toption) ->
 
 $(document).on 'tap.dialog.data-api', '[data-role="dialog"]', (e) ->
   $target = $($(@).attr('data-target'))
-  option = (if $target.data('dialog') then 'toggle' else $.extend({}, $target.data(), $this.data()))
+  option = (if $target.data('dialog') then 'toggle' else $.extend({}, $target.data(), $(@).data()))
   e.preventDefault() if $(@).is('a')
   $target.dialog option, @
 

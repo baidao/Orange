@@ -1,0 +1,14 @@
+.or-dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  z-index: 10000; /* Larger then the z-index value of .or-backdrop class */
+  overflow: auto;
+  overflow-y: scroll;
+  &.active {
+    display: block;
+  }
+}
