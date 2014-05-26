@@ -20,12 +20,11 @@ class Dialog
     return if @isShown
     $(document).on 'touchmove.dialog', -> return e.preventDefault()
     @$element.on 'tap', '[data-dismiss="dialog"]', @hide.bind @
+    @$element.on dismssEvent, (e) => @hide.call @ if e.target is e.currentTarget
     @backdrop =>
-      # @$element.show()
-      @$element[0].offsetWidth if $.support.transition and @options.effect #reflow
+      # @$element[0].offsetWidth
       @$element.addClass showClass
       @isShown = true
-
     if @options.expires > 0
       setTimeout =>
         @hide()
@@ -37,42 +36,24 @@ class Dialog
     @$element
       .removeClass(showClass)
       .off(dismssEvent)
-
-    callback = =>
-      @backdrop =>
-        @isShown = false
-        @$backdrop?.remove()
-        @$backdrop = null
-
-    if $.support.transition and @options.effect
-      @$element
-        .one($.support.transition.end, callback)
-        .emulateTransitionEnd(200)
-    else
-      callback()
+    @backdrop =>
+      @isShown = false
+      @$backdrop?.remove()
+      @$backdrop = null
 
   backdrop: (callback=->) ->
     if !@isShown and @options.backdrop #show
-      @$backdrop = $("<div class='back-drop disable-user-behavior'/>").appendTo(@$element.parent())
-      @$element.on dismssEvent, (e) =>
-        return if e.target isnt e.currentTarget
-        @hide.call @
-      if $.support.transition and @options.effect
-        @$backdrop[0].offsetWidth
-        @$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(200)
-      else
-        callback()
+      @$backdrop = $("<div class='or-backdrop disable-user-behavior'/>").appendTo(@$element.parent())
+      @$backdrop
+        .one($.support.transition.end, callback)
+        .emulateTransitionEnd(150)
+      @$backdrop[0].offsetWidth
       @$backdrop.addClass showClass
     else if @isShown and @$backdrop #hide
-      @$backdrop.removeClass showClass
-      if $.support.transition and @options.effect
-        @$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(200)
-      else
-        callback()
+      @$backdrop
+        .one($.support.transition.end, callback)
+        .emulateTransitionEnd(150)
+        .removeClass(showClass)
     else
       callback()
 

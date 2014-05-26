@@ -397,10 +397,12 @@ Dialog = (function() {
       return e.preventDefault();
     });
     this.$element.on('tap', '[data-dismiss="dialog"]', this.hide.bind(this));
-    this.backdrop(function() {
-      if ($.support.transition && _this.options.effect) {
-        _this.$element[0].offsetWidth;
+    this.$element.on(dismssEvent, function(e) {
+      if (e.target === e.currentTarget) {
+        return _this.hide.call(_this);
       }
+    });
+    this.backdrop(function() {
       _this.$element.addClass(showClass);
       return _this.isShown = true;
     });
@@ -412,57 +414,33 @@ Dialog = (function() {
   };
 
   Dialog.prototype.hide = function() {
-    var callback,
-      _this = this;
+    var _this = this;
     if (!this.isShown) {
       return;
     }
     $(document).off('touchmove.dialog');
     this.$element.removeClass(showClass).off(dismssEvent);
-    callback = function() {
-      return _this.backdrop(function() {
-        var _ref;
-        _this.isShown = false;
-        if ((_ref = _this.$backdrop) != null) {
-          _ref.remove();
-        }
-        return _this.$backdrop = null;
-      });
-    };
-    if ($.support.transition && this.options.effect) {
-      return this.$element.one($.support.transition.end, callback).emulateTransitionEnd(200);
-    } else {
-      return callback();
-    }
+    return this.backdrop(function() {
+      var _ref;
+      _this.isShown = false;
+      if ((_ref = _this.$backdrop) != null) {
+        _ref.remove();
+      }
+      return _this.$backdrop = null;
+    });
   };
 
   Dialog.prototype.backdrop = function(callback) {
-    var _this = this;
     if (callback == null) {
       callback = function() {};
     }
     if (!this.isShown && this.options.backdrop) {
-      this.$backdrop = $("<div class='back-drop disable-user-behavior'/>").appendTo(this.$element.parent());
-      this.$element.on(dismssEvent, function(e) {
-        if (e.target !== e.currentTarget) {
-          return;
-        }
-        return _this.hide.call(_this);
-      });
-      if ($.support.transition && this.options.effect) {
-        this.$backdrop[0].offsetWidth;
-        this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(200);
-      } else {
-        callback();
-      }
+      this.$backdrop = $("<div class='or-backdrop disable-user-behavior'/>").appendTo(this.$element.parent());
+      this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(150);
+      this.$backdrop[0].offsetWidth;
       return this.$backdrop.addClass(showClass);
     } else if (this.isShown && this.$backdrop) {
-      this.$backdrop.removeClass(showClass);
-      if ($.support.transition && this.options.effect) {
-        return this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(200);
-      } else {
-        return callback();
-      }
+      return this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(150).removeClass(showClass);
     } else {
       return callback();
     }

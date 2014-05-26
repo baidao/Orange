@@ -1,3 +1,19 @@
+.or-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: block;
+  z-index: 9999;
+  opacity: 0;
+  @include transition(opacity .2s);
+  &.active {
+    opacity: .5;
+  }
+}
+
 .or-dialog {
   position: fixed;
   top: 0;
@@ -5,7 +21,7 @@
   bottom: 0;
   left: 0;
   display: none;
-  z-index: 10000; /* Larger then the z-index value of .or-backdrop class */
+  z-index: 10000;
   overflow: auto;
   overflow-y: scroll;
   &.active {

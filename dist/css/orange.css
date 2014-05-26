@@ -871,6 +871,22 @@ img {
   .or-spinner.active {
     display: block; }
 
+.or-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: block;
+  z-index: 9999;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  transition: opacity 0.2s; }
+  .or-backdrop.active {
+    opacity: .5; }
+
 .or-dialog {
   position: fixed;
   top: 0;
@@ -879,7 +895,6 @@ img {
   left: 0;
   display: none;
   z-index: 10000;
-  /* Larger then the z-index value of .or-backdrop class */
   overflow: auto;
   overflow-y: scroll; }
   .or-dialog.active {
