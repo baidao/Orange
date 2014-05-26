@@ -4,7 +4,7 @@ require './zepto/data'
 require './transition'
 
 showClass = 'active'
-dismssEvent = 'tap.dismiss.dialog'
+dismssEvent = 'click.dismiss.dialog' #i dont` know why tap fuck in ios7...
 
 class Dialog
   constructor: (element, options) ->
@@ -43,12 +43,12 @@ class Dialog
 
   backdrop: (callback=->) ->
     if !@isShown and @options.backdrop #show
-      @$backdrop = $("<div class='or-backdrop disable-user-behavior'/>").appendTo(@$element.parent())
+      @$backdrop = $("<div class='or-backdrop'/>").appendTo(@$element.parent())
       @$backdrop
         .one($.support.transition.end, callback)
         .emulateTransitionEnd(150)
       @$backdrop[0].offsetWidth
-      @$backdrop.addClass showClass
+      @$backdrop.addClass showClassgi
     else if @isShown and @$backdrop #hide
       @$backdrop
         .one($.support.transition.end, callback)
