@@ -29,7 +29,7 @@ class Dialog
     @$element.on 'tap', '[data-dismiss="dialog"]', @hide.bind @
     @$element.on dismssEvent, (e) => @hide.call @ if e.target is e.currentTarget
     @backdrop =>
-      # @$element[0].offsetWidth
+      @$element[0].offsetWidth
       @$element.addClass showClass
       @isShown = true
       e = $.Event shownEvent
