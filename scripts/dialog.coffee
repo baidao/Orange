@@ -6,6 +6,11 @@ require './transition'
 showClass = 'active'
 dismssEvent = 'click.dismiss.dialog' #i dont` know why tap fuck in ios7...
 
+showEvent = 'show:dialog'
+shownEvent = 'shown:dialog'
+hideEvent = 'hide:dialog'
+hiddenEvent = 'hidden:dialog'
+
 class Dialog
   constructor: (element, options) ->
     @options = options
@@ -18,6 +23,8 @@ class Dialog
 
   show: ->
     return if @isShown
+    e = $.Event showEvent
+    @.$element.trigger e
     $(document).on 'touchmove.dialog', -> return e.preventDefault()
     @$element.on 'tap', '[data-dismiss="dialog"]', @hide.bind @
     @$element.on dismssEvent, (e) => @hide.call @ if e.target is e.currentTarget
@@ -25,6 +32,8 @@ class Dialog
       # @$element[0].offsetWidth
       @$element.addClass showClass
       @isShown = true
+      e = $.Event shownEvent
+      @.$element.trigger e
     if @options.expires > 0
       setTimeout =>
         @hide()
@@ -32,14 +41,18 @@ class Dialog
 
   hide: ->
     return unless @isShown
+    e = $.Event hideEvent
+    @.$element.trigger e
     $(document).off 'touchmove.dialog'
     @$element
       .removeClass(showClass)
       .off(dismssEvent)
     @backdrop =>
-      @isShown = false
       @$backdrop?.remove()
       @$backdrop = null
+      @isShown = false
+      e = $.Event hiddenEvent
+      @.$element.trigger e
 
   backdrop: (callback=->) ->
     if !@isShown and @options.backdrop #show
