@@ -690,11 +690,11 @@ select {
   padding: 6px 8px 5px; }
   .or-item-input input {
     -webkit-box-flex: 1;
-    -webkit-flex: 1;
+    -webkit-flex: 1 0 200px;
     -moz-box-flex: 1;
-    -moz-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
+    -moz-flex: 1 0 200px;
+    -ms-flex: 1 0 200px;
+    flex: 1 0 200px;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -704,15 +704,15 @@ select {
     margin: 0;
     background-color: transparent; }
   .or-item-input .input-label {
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 80px;
-    -moz-box-flex: 0;
-    -moz-flex: 0 0 80px;
-    -ms-flex: 0 0 80px;
-    flex: 0 0 80px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 80px;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 80px;
+    -ms-flex: 1 0 80px;
+    flex: 1 0 80px;
     max-width: 160px;
     width: 35%;
-    margin-right: 0.5em; }
+    margin-right: 4px; }
   .or-item-input.stacked-label {
     display: block;
     background-color: transparent;

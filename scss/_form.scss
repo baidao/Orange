@@ -67,7 +67,7 @@ select {
   padding: 6px 8px 5px;
 
   input {
-    @include flex(1);
+    @include flex(1, 0, 200px);
     @include appearance(none);
     display: block;
     margin: 0;
@@ -75,10 +75,10 @@ select {
   }
 
   .input-label {
-    @include flex(0, 0, 80px);
+    @include flex(1, 0, 80px);
     max-width: 160px;
     width: 35%;
-    margin-right: 0.5em;
+    margin-right: 4px;
   }
 
   &.stacked-label {
