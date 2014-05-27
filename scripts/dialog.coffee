@@ -61,7 +61,7 @@ class Dialog
         .one($.support.transition.end, callback)
         .emulateTransitionEnd(150)
       @$backdrop[0].offsetWidth
-      @$backdrop.addClass showClassgi
+      @$backdrop.addClass showClass
     else if @isShown and @$backdrop #hide
       @$backdrop
         .one($.support.transition.end, callback)
