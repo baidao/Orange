@@ -457,7 +457,7 @@ Dialog = (function() {
       this.$backdrop = $("<div class='or-backdrop'/>").appendTo(this.$element.parent());
       this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(150);
       this.$backdrop[0].offsetWidth;
-      return this.$backdrop.addClass(showClassgi);
+      return this.$backdrop.addClass(showClass);
     } else if (this.isShown && this.$backdrop) {
       return this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(150).removeClass(showClass);
     } else {
