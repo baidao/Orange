@@ -17,9 +17,6 @@
     bottom: 0;
     border-bottom: none;
     border-top: $border-default;
-    ~ .or-page > .or-page-content {
-      border-bottom: $bar-base-height solid transparent;
-    }
   }
 
   &.or-bar-nav {
@@ -61,10 +58,6 @@
       padding: 0;
       line-height: $bar-base-height;
       border: 0;
-    }
-
-    ~ .or-page > .or-page-content {
-      border-top: $bar-base-height solid transparent;
     }
   }
 
@@ -108,10 +101,6 @@
       .or-tab-item {
         @include flex();
       }
-    }
-
-    ~ .or-page > .or-page-content {
-      border-bottom: $bar-tab-height solid transparent;
     }
   }
 }

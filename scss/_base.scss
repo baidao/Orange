@@ -1,10 +1,28 @@
-$content-padding: 10px;
-
-.or-page {
+html, body {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}
+.or-content {
+  position: relative;
+  height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+.or-bar-nav ~ .or-content {
+  border-top: $bar-base-height solid transparent;
+}
+.or-bar-footer ~ .or-content {
+  border-bottom: $bar-tab-height solid transparent;
+}
+.or-bar-tab ~ .or-content {
+  border-bottom: $bar-base-height solid transparent;
+}
 
+
+/*
+utils
+*/
 
 .pull-left {
   float: left;
@@ -78,6 +96,8 @@ $content-padding: 10px;
   width: 100%;
 }
 
+
+$content-padding: 10px;
 
 .padding {
   padding: $content-padding;
