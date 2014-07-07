@@ -49,10 +49,29 @@ a {
 ol, ul {
   list-style: none; }
 
-.or-page {
+html, body {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden; }
+
+.or-content {
+  position: relative;
+  height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch; }
 
+.or-bar-nav ~ .or-content {
+  border-top: 44px solid transparent; }
+
+.or-bar-footer ~ .or-content {
+  border-bottom: 48px solid transparent; }
+
+.or-bar-tab ~ .or-content {
+  border-bottom: 44px solid transparent; }
+
+/*
+utils
+*/
 .pull-left {
   float: left; }
 
@@ -466,8 +485,6 @@ p {
     bottom: 0;
     border-bottom: none;
     border-top: 1px solid rgba(0, 0, 0, 0.2); }
-    .or-bar.or-bar-footer ~ .or-page > .or-page-content {
-      border-bottom: 44px solid transparent; }
   .or-bar.or-bar-nav {
     top: 0; }
     .or-bar.or-bar-nav .title {
@@ -499,8 +516,6 @@ p {
       padding: 0;
       line-height: 44px;
       border: 0; }
-    .or-bar.or-bar-nav ~ .or-page > .or-page-content {
-      border-top: 44px solid transparent; }
   .or-bar.or-bar-tab {
     display: table;
     bottom: 0;
@@ -540,8 +555,6 @@ p {
         -moz-flex: 1;
         -ms-flex: 1;
         flex: 1; }
-    .or-bar.or-bar-tab ~ .or-page > .or-page-content {
-      border-bottom: 48px solid transparent; }
 
 .or-list {
   padding-left: 0;
