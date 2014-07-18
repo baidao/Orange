@@ -1,11 +1,4 @@
-html, body {
-  position: relative;
-  height: 100%;
-  overflow-x: hidden;
-}
 .or-content {
-  position: relative;
-  height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
@@ -18,7 +11,6 @@ html, body {
 .or-bar-tab ~ .or-content {
   border-bottom: $bar-base-height solid transparent;
 }
-
 
 /*
 utils

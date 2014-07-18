@@ -1,11 +1,8 @@
 *.DS_Store
 node_modules
 bower_components
-test/temp
 .sass-cache
 .tmp
 scss/*.css
-Gruntfile.js
-grupfile.js
 scripts/*.js
-scripts/**/*.js
+grupfile.js

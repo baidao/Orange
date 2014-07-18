@@ -49,14 +49,7 @@ a {
 ol, ul {
   list-style: none; }
 
-html, body {
-  position: relative;
-  height: 100%;
-  overflow-x: hidden; }
-
 .or-content {
-  position: relative;
-  height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch; }
 
